@@ -11,7 +11,9 @@ Site institucional estático (HTML + CSS + JS puro, sem build). Basta abrir o `i
 
 ## O que falta preencher
 
-- **WhatsApp**: troque o número em `assets/script.js` (`const WHATSAPP`).
+- **RQE**: incluir junto ao CREMEC no `index.html` (topo e rodapé).
+
+WhatsApp e Instagram ficam em `assets/script.js` (`const WHATSAPP`) e no rodapé do `index.html`.
 
 ## Publicar no GitHub Pages
 

@@ -1,5 +1,5 @@
 // Número do WhatsApp: código do país + DDD + número, só dígitos (ex.: 5585999999999)
-const WHATSAPP = "5585000000000";
+const WHATSAPP = "5585991034586";
 const MENSAGEM = "Olá, Dra. Camila! Gostaria de agendar uma consulta.";
 
 const linkWhatsapp = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(MENSAGEM)}`;

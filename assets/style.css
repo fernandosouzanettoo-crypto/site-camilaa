@@ -202,3 +202,11 @@ p + p { margin-top: 1.1rem; }
   .plano { padding: 1.5rem; }
   .citacao { font-size: 1.3rem; }
 }
+
+/* Contatos */
+.acoes { display: flex; flex-wrap: wrap; justify-content: center; gap: 0 1rem; }
+.btn--contorno { background: transparent; color: var(--marinho); }
+.btn--contorno:hover { background: var(--marinho); color: var(--branco); }
+.rodape .contatos { display: flex; flex-wrap: wrap; justify-content: center; gap: .4rem 1.6rem; margin: 1rem 0 1.2rem; }
+.rodape .contatos a { text-decoration: none; font-weight: 500; letter-spacing: .03em; }
+.rodape .contatos a:hover { text-decoration: underline; }
