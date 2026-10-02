@@ -43,7 +43,8 @@ export function Hero() {
       <div className="absolute inset-x-0 top-1/2 z-10 flex -translate-y-[38%] justify-center sm:bottom-0 sm:top-auto sm:translate-y-0">
         <motion.div style={{ y: retratoY }}>
           <FadeIn delay={0.6} y={30}>
-            <Magnet>
+            {/* Magnet suave: segue o cursor de leve, no máximo 18px */}
+            <Magnet strength={12} limite={18} suave>
               <div className="relative w-[240px] overflow-hidden rounded-t-full border border-dourado/40 bg-[#c9cacc] sm:w-[320px] md:w-[400px] lg:w-[460px] aspect-[4/5.1] sm:aspect-[4/5]">
                 <Picture
                   nome="hero-camila"

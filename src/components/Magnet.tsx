@@ -7,11 +7,15 @@ type Props = {
   padding?: number;
   /** Deslocamento = distância do centro / strength. */
   strength?: number;
+  /** Deslocamento máximo (px) em cada eixo. */
+  limite?: number;
+  /** Entrada mais lenta, para elementos grandes como o retrato. */
+  suave?: boolean;
   className?: string;
 };
 
 /** Segue o cursor quando ele se aproxima. Somente em desktop com mouse. */
-export function Magnet({ children, padding = 150, strength = 3, className }: Props) {
+export function Magnet({ children, padding = 150, strength = 3, limite = Infinity, suave = false, className }: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const touch = useIsTouch();
   const reduced = useReducedMotion();
@@ -37,9 +41,10 @@ export function Magnet({ children, padding = 150, strength = 3, className }: Pro
           e.clientX > left - padding && e.clientX < left + r.width + padding &&
           e.clientY > top - padding && e.clientY < top + r.height + padding;
         if (perto) {
-          const x = (e.clientX - cx) / strength;
-          const y = (e.clientY - cy) / strength;
-          el.style.transition = "transform 0.3s ease-out";
+          const limitar = (v: number) => Math.max(-limite, Math.min(limite, v));
+          const x = limitar((e.clientX - cx) / strength);
+          const y = limitar((e.clientY - cy) / strength);
+          el.style.transition = `transform ${suave ? "0.9s" : "0.3s"} ease-out`;
           el.style.transform = `translate3d(${x}px, ${y}px, 0)`;
           el.dataset.x = String(x);
           el.dataset.y = String(y);
@@ -59,7 +64,7 @@ export function Magnet({ children, padding = 150, strength = 3, className }: Pro
       window.removeEventListener("mousemove", mover);
       el.style.transform = "";
     };
-  }, [ativo, padding, strength]);
+  }, [ativo, padding, strength, limite, suave]);
 
   return (
     <div ref={ref} className={className} style={{ willChange: ativo ? "transform" : undefined }}>
