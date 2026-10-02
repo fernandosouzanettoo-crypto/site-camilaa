@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://dra-camila-egypto.vercel.app/sitemap.xml

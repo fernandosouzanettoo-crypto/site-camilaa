@@ -47,3 +47,5 @@ src/
 - Em telas de toque, os efeitos de cursor e hover ficam desligados.
 - O 3D (three.js) fica num pedaço separado do código, carregado só quando a seção Sobre se aproxima, e pausa fora da tela. DPR máximo 1.5; no celular, um objeto só e sem transmission.
 - Lighthouse mobile (build local): desempenho 94, acessibilidade 100, boas práticas 96, SEO 100.
+
+Endereço publicado: https://dra-camila-egypto.vercel.app/ (se mudar para um domínio próprio, atualize `og:url`, `og:image`, `canonical` no `index.html`, o `robots.txt` e o `sitemap.xml`).
