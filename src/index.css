@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    background: #0e1d31;
+  }
+  body {
+    @apply bg-marinho-escuro font-sans text-claro;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: #c4ac8f;
+    color: #0e1d31;
+  }
+  :focus-visible {
+    outline: 1px solid #c4ac8f;
+    outline-offset: 4px;
+  }
+}
+
+@layer components {
+  /* Título em degradê sobre fundo escuro */
+  .hero-heading {
+    background: linear-gradient(180deg, #6e8099 0%, #e6ecf2 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #e6ecf2;
+  }
+
+  .nav-link {
+    @apply text-sm uppercase tracking-wider text-claro transition-opacity duration-200 hover:opacity-70 md:text-base;
+  }
+
+  /* Seções sobrepostas a partir da seção 4 */
+  .secao-sobreposta {
+    @apply relative -mt-10 rounded-t-[40px] sm:-mt-12 sm:rounded-t-[50px] md:-mt-14 md:rounded-t-[60px];
+  }
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
