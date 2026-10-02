@@ -252,18 +252,6 @@ p + p { margin-top: 1.2rem; }
 .processo__texto { position: absolute; z-index: 2; left: var(--margem); right: var(--margem); bottom: clamp(48px, 10vh, 96px); color: var(--off); }
 .processo__frase { font-family: var(--serif); font-size: clamp(2rem, 5vw, 4.8rem); line-height: 1.05; letter-spacing: -.02em; max-width: 900px; }
 
-/* ---------- Investimento ---------- */
-.investimento { padding: var(--secao) 0; background: var(--marinho); color: rgba(247, 244, 239, .74); }
-.investimento__topo { margin-bottom: clamp(3rem, 6vw, 5rem); }
-.planos { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--linha-clara); border-bottom: 1px solid var(--linha-clara); }
-.plano { padding: clamp(2rem, 4vw, 3.4rem) clamp(1.2rem, 3vw, 2.8rem); transition: background-color .8s var(--ease); }
-.plano + .plano { border-left: 1px solid var(--linha-clara); }
-.plano:hover { background: var(--marinho-claro); }
-.plano h3 { font-size: .72rem; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; color: var(--dourado); margin-bottom: 2.2rem; }
-.plano__preco { font-family: var(--serif); font-size: clamp(2.6rem, 4vw, 3.6rem); line-height: 1; color: var(--off); margin-bottom: 1.6rem; }
-.plano__preco small { font-family: var(--sans); font-size: .82rem; letter-spacing: .04em; opacity: .7; }
-.investimento__nota { max-width: 720px; margin-top: 2.8rem; font-size: .95rem; }
-
 /* ---------- Dúvidas ---------- */
 .duvidas { padding: var(--secao) 0; background: var(--off); }
 .duvidas__grid { display: grid; grid-template-columns: 1fr 1.35fr; gap: clamp(2.5rem, 7vw, 8rem); align-items: start; }
@@ -340,8 +328,7 @@ p + p { margin-top: 1.2rem; }
   .contato__texto { order: 0; }
   .cuidado__foto, .contato__foto { width: min(100%, 460px); }
   .contato__foto { margin-inline: auto; }
-  .consulta__passos, .planos { grid-template-columns: 1fr; }
-  .plano + .plano { border-left: 0; border-top: 1px solid var(--linha-clara); }
+  .consulta__passos { grid-template-columns: 1fr; }
   .pilar { grid-template-columns: 1fr; min-height: 56vh; top: calc(12vh + var(--i, 0) * 18px); }
   .pilar p { justify-self: start; }
   .quando__lista li { grid-template-columns: 52px 1fr; padding: 1.2rem 0; }
