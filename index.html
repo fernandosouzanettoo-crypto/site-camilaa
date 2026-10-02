@@ -2,273 +2,314 @@
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Dra. Camila Egypto | Psiquiatria</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Dra. Camila Egypto · Psiquiatria</title>
   <meta name="description" content="Dra. Camila Egypto, psiquiatra (CREMEC 29104). Atendimento psiquiátrico com escuta qualificada, precisão clínica e uma abordagem técnica, empática e individualizada.">
   <meta name="theme-color" content="#152A45">
-  <meta property="og:title" content="Dra. Camila Egypto | Psiquiatria">
-  <meta property="og:description" content="Cuidar da mente é conectar histórias. Atendimento psiquiátrico individualizado.">
-  <meta property="og:image" content="assets/img/sobre-camila.jpg">
   <meta property="og:type" content="website">
-  <link rel="icon" type="image/png" href="assets/img/favicon.png">
+  <meta property="og:title" content="Dra. Camila Egypto · Psiquiatria">
+  <meta property="og:description" content="Cuidar da mente é conectar histórias.">
+  <meta property="og:image" content="assets/fotos/web/hero-camila-1284.webp">
+  <link rel="icon" href="assets/logo/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/logo/favicon-32.png">
+  <link rel="apple-touch-icon" href="assets/logo/apple-touch-icon.png">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400..500&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" type="image/webp" href="assets/fotos/web/hero-camila-960.webp"
+        imagesrcset="assets/fotos/web/hero-camila-640.webp 640w, assets/fotos/web/hero-camila-960.webp 960w, assets/fotos/web/hero-camila-1284.webp 1284w"
+        imagesizes="(max-width: 860px) 88vw, 42vw" fetchpriority="high">
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <script>
+    // Ativa os estados iniciais das animações só quando há JS; se algo falhar, o conteúdo aparece mesmo assim.
+    document.documentElement.classList.add("js");
+    window.__fallback = setTimeout(function () { document.documentElement.classList.add("is-ready", "sem-anim"); }, 4000);
+  </script>
 </head>
 <body>
-  <header class="topo">
-    <div class="container topo__inner">
-      <a href="#inicio" class="marca" aria-label="Dra. Camila Egypto — início">
-        <img src="assets/img/monograma-claro.png" alt="" width="34" height="40">
-        <span>Dra. Camila Egypto</span>
-      </a>
-      <button class="menu-btn" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">
-        <span></span><span></span><span></span>
-      </button>
-      <nav class="menu" id="menu">
-        <a href="#sobre">Sobre</a>
+  <div class="loader" aria-hidden="true">
+    <img class="loader__logo" src="assets/logo/logo-dra-camila-egypto.png" alt="" width="957" height="917">
+  </div>
+
+  <a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="topo" data-topo>
+    <div class="topo__inner">
+      <a href="#inicio" class="topo__nome">Dra. Camila Egypto</a>
+      <nav class="topo__nav" id="menu" aria-label="Principal">
+        <a href="#cuidado">O cuidado</a>
         <a href="#quando-procurar">Quando procurar</a>
         <a href="#consulta">A consulta</a>
         <a href="#investimento">Investimento</a>
         <a href="#duvidas">Dúvidas</a>
-        <a href="#" class="btn btn--bege btn--pequeno js-whatsapp">Agendar consulta</a>
+        <a href="#" class="topo__cta js-whatsapp">Agendar</a>
       </nav>
+      <button class="topo__menu" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">
+        <span></span><span></span>
+      </button>
     </div>
   </header>
 
-  <main>
-    <!-- Boas-vindas -->
-    <section id="inicio" class="boas-vindas">
-      <img class="marca-dagua" src="assets/img/monograma-claro.png" alt="" aria-hidden="true">
-      <div class="container boas-vindas__inner">
-        <h1 class="titulo-caps">Seja bem-vindo(a)</h1>
-        <div class="moldura-oval">
-          <img src="assets/img/sobre-camila.jpg" alt="Dra. Camila Egypto, psiquiatra" width="1000" height="1502">
+  <main id="conteudo">
+
+    <!-- HERO -->
+    <section class="hero" id="inicio" data-hero>
+      <div class="hero__grid">
+        <div class="hero__texto" data-depth="0.35">
+          <p class="hero__eyebrow" data-hero-fade>CREMEC 29104</p>
+          <h1 class="hero__titulo" data-hero-title>Dra. Camila<br>Egypto</h1>
+          <p class="hero__especialidade" data-hero-fade><span class="filete"></span>Psiquiatria</p>
+          <p class="hero__frase" data-hero-fade>Cuidar da mente é conectar histórias.</p>
+          <a href="#" class="btn btn--claro js-whatsapp" data-hero-fade data-magnetico>
+            <span>Agendar consulta</span>
+          </a>
         </div>
-        <img class="logo-claro" src="assets/img/logo-claro.png" alt="Dra. Camila Egypto — Psiquiatria — Cuidar da mente é conectar histórias" width="957" height="917">
-        <p class="crm">CREMEC 29104</p>
+
+        <div class="hero__visual">
+          <div class="hero__moldura" data-depth="1" data-speed="-0.35" aria-hidden="true"></div>
+          <span class="hero__linha" data-depth="1.4" data-speed="0.6" aria-hidden="true"></span>
+          <div class="hero__foto" data-depth="0.7" data-speed="0.25" data-hero-photo>
+            <img src="assets/fotos/web/hero-camila-960.webp"
+                 srcset="assets/fotos/web/hero-camila-640.webp 640w, assets/fotos/web/hero-camila-960.webp 960w, assets/fotos/web/hero-camila-1284.webp 1284w"
+                 sizes="(max-width: 860px) 88vw, 42vw"
+                 width="1284" height="1818" alt="Dra. Camila Egypto, psiquiatra, sentada de terno preto"
+                 fetchpriority="high" decoding="async">
+          </div>
+        </div>
+      </div>
+      <a href="#manifesto" class="hero__rolar" data-hero-fade aria-label="Rolar para o conteúdo">
+        <span></span>
+      </a>
+    </section>
+
+    <!-- MANIFESTO -->
+    <section class="manifesto" id="manifesto">
+      <p class="manifesto__texto" data-scrub-words>Antes de pensar em um diagnóstico, é preciso compreender a pessoa que está diante de nós.</p>
+    </section>
+
+    <!-- O CUIDADO -->
+    <section class="cuidado" id="cuidado">
+      <div class="cuidado__grid">
+        <figure class="cuidado__foto" data-reveal-img>
+          <img src="assets/fotos/web/sobre-camila-960.webp"
+               srcset="assets/fotos/web/sobre-camila-640.webp 640w, assets/fotos/web/sobre-camila-960.webp 960w, assets/fotos/web/sobre-camila-1284.webp 1284w"
+               sizes="(max-width: 860px) 88vw, 40vw"
+               width="1284" height="1929" alt="Dra. Camila Egypto de perfil, com blazer branco"
+               loading="lazy" decoding="async">
+        </figure>
+        <div class="cuidado__texto">
+          <p class="eyebrow" data-fade>O cuidado</p>
+          <h2 class="titulo" data-split>Um cuidado que começa pela escuta.</h2>
+          <p data-fade>Cuidar da saúde mental vai muito além de tratar sintomas. Durante a consulta, busco compreender não apenas o que você está sentindo, mas também como esses sintomas surgiram e de que forma estão interferindo na sua vida.</p>
+          <p data-fade>Cada pessoa possui uma história, um contexto e necessidades diferentes. Por isso, o cuidado é construído de forma individualizada, utilizando as melhores evidências científicas disponíveis.</p>
+          <img class="cuidado__logo" src="assets/logo/logo-dra-camila-egypto.png" alt="Dra. Camila Egypto — Psiquiatria — Cuidar da mente é conectar histórias"
+               width="957" height="917" loading="lazy" decoding="async" data-fade>
+        </div>
       </div>
     </section>
 
-    <!-- Introdução -->
-    <section class="intro">
-      <img class="marca-dagua marca-dagua--clara" src="assets/img/monograma.png" alt="" aria-hidden="true">
-      <div class="container intro__inner">
-        <div class="intro__texto">
-          <h2>Um cuidado que começa pela escuta.</h2>
-          <p>Atendimento psiquiátrico com escuta qualificada, precisão clínica e uma abordagem técnica, empática e individualizada.</p>
-          <p>A Dra. Camila Egypto realiza consulta psiquiátrica voltada à avaliação, diagnóstico e acompanhamento do sofrimento psíquico e dos transtornos mentais, sempre respeitando a singularidade de cada paciente.</p>
-          <a href="#" class="btn js-whatsapp">Agendar pelo WhatsApp</a>
-        </div>
-        <div class="intro__foto">
-          <img src="assets/img/atuacao-camila.jpg" alt="Dra. Camila Egypto sorrindo, de branco" width="1000" height="1431" loading="lazy">
-        </div>
-      </div>
-    </section>
-
-    <!-- Sobre -->
-    <section id="sobre" class="faixa faixa--bege">
-      <div class="container texto-central">
-        <h2>Sobre o meu cuidado</h2>
-        <p class="destaque">Cuidar da saúde mental vai muito além de tratar sintomas.</p>
-        <p>Meu objetivo é oferecer um atendimento psiquiátrico com escuta qualificada, precisão clínica e uma abordagem técnica, empática e individualizada.</p>
-        <p>Durante a consulta, busco compreender não apenas o que você está sentindo, mas também como esses sintomas surgiram, de que forma estão interferindo na sua vida e quais fatores podem estar contribuindo para o seu sofrimento.</p>
-        <p>Cada pessoa possui uma história, um contexto e necessidades diferentes. Por isso, o cuidado é construído de forma individualizada, respeitando sua singularidade e utilizando as melhores evidências científicas disponíveis para orientar as decisões clínicas.</p>
-        <p class="citacao">Antes de pensar em um diagnóstico, é preciso compreender a pessoa que está diante de nós.</p>
-      </div>
-    </section>
-
-    <!-- Quando procurar -->
-    <section id="quando-procurar" class="faixa faixa--marinho quando">
-      <div class="quando__foto" aria-hidden="true">
-        <img src="assets/img/contato-camila.jpg" alt="" loading="lazy">
-      </div>
+    <!-- QUANDO PROCURAR -->
+    <section class="quando" id="quando-procurar">
       <div class="container">
-        <div class="quando__texto">
-          <h2 class="titulo-bege">Quando procurar um psiquiatra?</h2>
-          <p class="destaque">Você não precisa esperar chegar ao seu limite para procurar ajuda.</p>
-          <p>Muitas pessoas associam a Psiquiatria apenas a situações graves. Mas o acompanhamento psiquiátrico também pode ser importante quando mudanças emocionais, comportamentais ou cognitivas começam a comprometer sua qualidade de vida, seus relacionamentos, seu trabalho ou sua capacidade de funcionar como antes.</p>
-          <ul class="lista">
-            <li>Depressão e transtorno bipolar</li>
-            <li>Ansiedade, crises de pânico, fobias e TOC</li>
-            <li>TDAH e outras condições do neurodesenvolvimento em adultos</li>
-            <li>Insônia e outros problemas relacionados ao sono</li>
-            <li>Transtornos psicóticos</li>
-            <li>Uso prejudicial ou dependência de álcool e outras substâncias</li>
-            <li>Transtornos de personalidade e dificuldades emocionais ou relacionais persistentes</li>
-            <li>Situações de sofrimento psíquico que estejam trazendo prejuízo à vida cotidiana</li>
-          </ul>
-          <p class="destaque">Nem todo sofrimento significa um transtorno mental.<br>Mas todo sofrimento que está limitando a sua vida merece ser compreendido.</p>
+        <div class="quando__topo">
+          <p class="eyebrow eyebrow--dourado" data-fade>Quando procurar um psiquiatra</p>
+          <h2 class="titulo titulo--claro" data-split>Você não precisa esperar chegar ao seu limite.</h2>
+          <p class="quando__intro" data-fade>O acompanhamento psiquiátrico pode ser importante quando mudanças emocionais, comportamentais ou cognitivas começam a comprometer sua qualidade de vida, seus relacionamentos ou seu trabalho.</p>
         </div>
+        <ol class="quando__lista" data-lista>
+          <li><span>01</span>Depressão e transtorno bipolar</li>
+          <li><span>02</span>Ansiedade, crises de pânico, fobias e TOC</li>
+          <li><span>03</span>TDAH e outras condições do neurodesenvolvimento em adultos</li>
+          <li><span>04</span>Insônia e outros problemas relacionados ao sono</li>
+          <li><span>05</span>Transtornos psicóticos</li>
+          <li><span>06</span>Uso prejudicial ou dependência de álcool e outras substâncias</li>
+          <li><span>07</span>Transtornos de personalidade e dificuldades emocionais ou relacionais persistentes</li>
+          <li><span>08</span>Sofrimento psíquico que esteja trazendo prejuízo à vida cotidiana</li>
+        </ol>
+        <p class="quando__fecho" data-split>Nem todo sofrimento significa um transtorno mental. Mas todo sofrimento que está limitando a sua vida merece ser compreendido.</p>
       </div>
     </section>
 
-    <!-- Como funciona -->
-    <section id="consulta" class="faixa">
-      <div class="container estreito">
-        <h2>Como funciona a consulta?</h2>
-        <p class="destaque">A consulta é um espaço de investigação, escuta e construção conjunta do cuidado.</p>
-        <p>Não se trata apenas de perguntar sintomas e prescrever uma medicação.</p>
-        <p>Conversamos sobre sua história atual, saúde física e mental, tratamentos anteriores, sono, rotina, relacionamentos, trabalho, hábitos de vida, uso de substâncias, histórico familiar e outros aspectos que possam ser relevantes.</p>
-        <p>A partir dessa avaliação, discutimos juntos as possibilidades de cuidado.</p>
-        <p>O tratamento pode envolver psicoeducação, mudanças de hábitos, psicoterapia, encaminhamentos para outros profissionais e, quando houver indicação clínica, tratamento medicamentoso.</p>
-        <p>A proposta é que você compreenda o que está acontecendo, quais são as possibilidades terapêuticas e por que determinada conduta está sendo indicada.</p>
-      </div>
-    </section>
-
-    <!-- Medicação -->
-    <section class="faixa faixa--bege">
-      <div class="container texto-central">
-        <h2>E sobre medicação?</h2>
-        <p class="destaque">Consultar um psiquiatra não significa necessariamente sair da consulta com uma receita.</p>
-        <p>A medicação é uma das ferramentas disponíveis na Psiquiatria — e sua indicação depende de uma avaliação individualizada.</p>
-        <p>Quando um medicamento é indicado, conversamos sobre objetivos do tratamento, benefícios esperados, possíveis efeitos adversos, alternativas e acompanhamento da resposta ao longo do tempo.</p>
-        <p>Em alguns casos, uma consulta é suficiente para definir uma estratégia inicial. Em outros, pode ser necessário acompanhar a evolução e reunir mais informações antes de estabelecer determinada conduta.</p>
-        <p class="citacao">A decisão terapêutica deve ser segura, fundamentada e compartilhada — nunca automática.</p>
-      </div>
-    </section>
-
-    <!-- Acompanhamento -->
-    <section class="faixa faixa--marinho">
-      <div class="container duas-colunas">
-        <div>
-          <h2 class="titulo-bege">Por que o acompanhamento é importante?</h2>
-          <p class="destaque">Saúde mental é processo, não apenas uma consulta.</p>
-          <p>Alguns quadros exigem acompanhamento ao longo do tempo para observar a evolução dos sintomas, resposta ao tratamento, efeitos adversos e mudanças na rotina e no funcionamento.</p>
-          <p>É durante esse processo que conseguimos ajustar o tratamento, prevenir recaídas, reconhecer sinais precoces de piora e consolidar estratégias que favoreçam maior estabilidade e qualidade de vida.</p>
-          <p>Por isso, quando há indicação, o acompanhamento continuado pode ser tão importante quanto a primeira avaliação.</p>
-          <p>O objetivo não é apenas que você se sinta melhor por alguns dias, mas construir um cuidado que faça sentido e seja sustentável ao longo do tempo.</p>
+    <!-- PILARES -->
+    <section class="pilares">
+      <div class="container">
+        <div class="pilares__topo">
+          <p class="eyebrow" data-fade>Um cuidado centrado em você</p>
+          <h2 class="titulo" data-split>Não existe uma receita pronta para cuidar da saúde mental.</h2>
         </div>
-        <div class="foto-arco">
-          <img src="assets/img/hero-camila.jpg" alt="Dra. Camila Egypto de terno preto" width="1000" height="1416" loading="lazy">
-        </div>
-      </div>
-    </section>
-
-    <!-- Pilares -->
-    <section class="faixa">
-      <div class="container texto-central">
-        <h2>Um cuidado centrado em você</h2>
-        <p>Não existe uma receita pronta para cuidar da saúde mental. Duas pessoas podem apresentar sintomas semelhantes e, ainda assim, precisarem de estratégias completamente diferentes.</p>
-        <div class="pilares">
-          <article>
+        <div class="pilares__pilha" data-pilha>
+          <article class="pilar">
+            <span class="pilar__num">I</span>
             <h3>Ciência</h3>
             <p>Condutas orientadas pelas melhores evidências científicas disponíveis.</p>
           </article>
-          <article>
+          <article class="pilar pilar--claro">
+            <span class="pilar__num">II</span>
             <h3>Individualidade</h3>
             <p>Diagnóstico e tratamento considerando sua história, necessidades, preferências e contexto de vida.</p>
           </article>
-          <article>
+          <article class="pilar pilar--escuro">
+            <span class="pilar__num">III</span>
             <h3>Humanização</h3>
-            <p>Um espaço de escuta sem julgamentos, no qual você possa falar sobre aquilo que está vivendo com segurança. Você participa das decisões sobre o seu próprio tratamento.</p>
+            <p>Um espaço de escuta sem julgamentos, no qual você participa das decisões sobre o seu próprio tratamento.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- Documentos -->
-    <section class="faixa faixa--bege documentos">
-      <img class="marca-dagua marca-dagua--escura" src="assets/img/monograma.png" alt="" aria-hidden="true">
-      <div class="container estreito">
-        <h2>Sobre laudos, relatórios e atestados</h2>
-        <p>Documentos médicos são emitidos quando existe indicação clínica e respaldo técnico para isso.</p>
-        <p>A necessidade de laudos, relatórios ou atestados é avaliada individualmente, considerando o motivo da solicitação, os achados da avaliação e, quando necessário, o tempo de acompanhamento.</p>
-        <p>Por isso, a realização da consulta não implica emissão automática de documentos.</p>
-        <p>Caso você tenha uma necessidade específica, conte sobre ela durante o atendimento para que possamos avaliar sua viabilidade de forma adequada e responsável.</p>
+    <!-- A CONSULTA -->
+    <section class="consulta" id="consulta">
+      <div class="container">
+        <div class="consulta__topo">
+          <p class="eyebrow" data-fade>A consulta</p>
+          <h2 class="titulo" data-split>Um espaço de investigação, escuta e construção conjunta do cuidado.</h2>
+        </div>
+        <div class="consulta__passos">
+          <article class="passo" data-fade>
+            <span class="passo__num">01</span>
+            <h3>Escuta</h3>
+            <p>Conversamos sobre sua história, saúde física e mental, tratamentos anteriores, sono, rotina, relacionamentos e hábitos de vida.</p>
+          </article>
+          <article class="passo" data-fade>
+            <span class="passo__num">02</span>
+            <h3>Compreensão</h3>
+            <p>A partir dessa avaliação, discutimos juntos as possibilidades de cuidado, para que você entenda o que está acontecendo.</p>
+          </article>
+          <article class="passo" data-fade>
+            <span class="passo__num">03</span>
+            <h3>Plano</h3>
+            <p>Psicoeducação, mudanças de hábitos, psicoterapia, encaminhamentos e, quando houver indicação clínica, tratamento medicamentoso.</p>
+          </article>
+        </div>
       </div>
     </section>
 
-    <!-- Investimento -->
-    <section id="investimento" class="faixa">
-      <div class="container duas-colunas duas-colunas--topo">
+    <!-- IMAGEM EM TELA CHEIA -->
+    <section class="processo" data-expandir>
+      <div class="processo__fixo">
+        <figure class="processo__foto" data-expandir-foto>
+          <img src="assets/fotos/web/atuacao-camila-1284.webp"
+               srcset="assets/fotos/web/atuacao-camila-640.webp 640w, assets/fotos/web/atuacao-camila-960.webp 960w, assets/fotos/web/atuacao-camila-1284.webp 1284w"
+               sizes="100vw" width="1284" height="1838" alt="Dra. Camila Egypto sorrindo, de branco"
+               loading="lazy" decoding="async">
+        </figure>
+        <div class="processo__texto" data-expandir-texto>
+          <p class="eyebrow eyebrow--dourado">Acompanhamento</p>
+          <p class="processo__frase">Saúde mental é processo, não apenas uma consulta.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- INVESTIMENTO -->
+    <section class="investimento" id="investimento">
+      <div class="container">
+        <div class="investimento__topo">
+          <p class="eyebrow eyebrow--dourado" data-fade>Investimento</p>
+          <h2 class="titulo titulo--claro" data-split>Consulta e acompanhamento</h2>
+        </div>
+        <div class="planos">
+          <article class="plano" data-fade>
+            <h3>Consulta psiquiátrica individual</h3>
+            <p class="plano__preco">R$ 250</p>
+            <p>Avaliação direcionada à compreensão do seu quadro e à construção de um plano terapêutico individualizado.</p>
+          </article>
+          <article class="plano" data-fade>
+            <h3>Acompanhamento · 3 meses</h3>
+            <p class="plano__preco">R$ 225 <small>por consulta</small></p>
+            <p>1 consulta mensal durante 3 meses.<br>Investimento total: R$ 675.</p>
+          </article>
+          <article class="plano" data-fade>
+            <h3>Acompanhamento · 6 meses</h3>
+            <p class="plano__preco">R$ 200 <small>por consulta</small></p>
+            <p>1 consulta mensal durante 6 meses.<br>Investimento total: R$ 1.200.</p>
+          </article>
+        </div>
+        <p class="investimento__nota" data-fade>O acompanhamento inclui reavaliação da evolução clínica, monitoramento da resposta ao tratamento, ajustes terapêuticos e canal pelo WhatsApp para dúvidas pontuais entre as consultas.</p>
+      </div>
+    </section>
+
+    <!-- DÚVIDAS -->
+    <section class="duvidas" id="duvidas">
+      <div class="container duvidas__grid">
         <div>
-          <h2>Investimento</h2>
-          <div class="planos">
-            <article class="plano">
-              <h3>Consulta psiquiátrica individual</h3>
-              <p class="preco">R$ 250,00</p>
-              <p>Uma avaliação direcionada à compreensão do seu quadro e à construção de um plano terapêutico individualizado.</p>
-            </article>
-            <article class="plano">
-              <h3>Plano de acompanhamento — 3 meses</h3>
-              <p>Para pacientes que desejam iniciar um período de acompanhamento psiquiátrico continuado: 1 consulta mensal durante 3 meses.</p>
-              <p class="preco">R$ 225,00 <small>por consulta</small></p>
-              <p class="total">Investimento total: R$ 675,00</p>
-            </article>
-            <article class="plano plano--destaque">
-              <h3>Plano de acompanhamento — 6 meses</h3>
-              <p>Para pacientes com indicação de seguimento psiquiátrico continuado: 1 consulta mensal durante 6 meses.</p>
-              <p class="preco">R$ 200,00 <small>por consulta</small></p>
-              <p class="total">Investimento total: R$ 1.200,00</p>
-            </article>
+          <p class="eyebrow" data-fade>Dúvidas frequentes</p>
+          <h2 class="titulo" data-split>Perguntas que costumam surgir.</h2>
+        </div>
+        <div class="faq" data-faq>
+          <details>
+            <summary>Preciso estar em uma situação grave para procurar um psiquiatra?<i aria-hidden="true"></i></summary>
+            <div class="faq__corpo"><p>Não. Quanto mais cedo identificamos um sofrimento que está causando prejuízo, mais cedo podemos compreender o que está acontecendo e discutir estratégias de cuidado.</p></div>
+          </details>
+          <details>
+            <summary>Vou precisar tomar medicação?<i aria-hidden="true"></i></summary>
+            <div class="faq__corpo"><p>Não necessariamente. A medicação é uma das ferramentas disponíveis na Psiquiatria, e sua indicação depende de uma avaliação individualizada. Quando indicada, conversamos sobre objetivos, benefícios esperados, possíveis efeitos adversos e alternativas.</p></div>
+          </details>
+          <details>
+            <summary>Uma consulta é suficiente?<i aria-hidden="true"></i></summary>
+            <div class="faq__corpo"><p>Depende do caso. Algumas situações podem ser inicialmente esclarecidas em uma consulta, enquanto outras exigem acompanhamento para avaliação diagnóstica, ajuste terapêutico e monitoramento da evolução.</p></div>
+          </details>
+          <details>
+            <summary>Psiquiatra e psicólogo fazem a mesma coisa?<i aria-hidden="true"></i></summary>
+            <div class="faq__corpo"><p>Não. São atuações diferentes e frequentemente complementares. Quando houver indicação, o acompanhamento conjunto pode fazer parte do plano terapêutico.</p></div>
+          </details>
+          <details>
+            <summary>A consulta inclui laudos, relatórios ou atestados?<i aria-hidden="true"></i></summary>
+            <div class="faq__corpo"><p>Documentos médicos são emitidos quando existe indicação clínica e respaldo técnico. A necessidade é avaliada individualmente, por isso a consulta não implica emissão automática de documentos. Se você tiver uma necessidade específica, conte durante o atendimento.</p></div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section class="contato" id="contato">
+      <div class="contato__grid">
+        <figure class="contato__foto" data-reveal-img>
+          <img src="assets/fotos/web/contato-camila-960.webp"
+               srcset="assets/fotos/web/contato-camila-640.webp 640w, assets/fotos/web/contato-camila-960.webp 960w, assets/fotos/web/contato-camila-1284.webp 1284w"
+               sizes="(max-width: 860px) 88vw, 40vw"
+               width="1284" height="1823" alt="Dra. Camila Egypto olhando por cima do ombro, de preto"
+               loading="lazy" decoding="async">
+        </figure>
+        <div class="contato__texto">
+          <p class="eyebrow" data-fade>Agende sua consulta</p>
+          <h2 class="titulo titulo--grande" data-split>Cuidar da saúde mental é um processo.</h2>
+          <p data-fade>Você não precisa esperar o sofrimento se tornar insuportável para começar. Às vezes, procurar ajuda é justamente o primeiro passo para entender por que as coisas têm sido tão difíceis.</p>
+          <div class="contato__acoes" data-fade>
+            <a href="#" class="btn js-whatsapp" data-magnetico><span>Agendar pelo WhatsApp</span></a>
+            <a href="https://www.instagram.com/camilaegypto.psiquiatria/" class="link-sublinhado" target="_blank" rel="noopener">@camilaegypto.psiquiatria</a>
           </div>
-          <p class="nota">O acompanhamento inclui reavaliação da evolução clínica, monitoramento da resposta ao tratamento e de possíveis efeitos adversos, ajustes terapêuticos quando necessários, orientações e encaminhamentos. Também há canal pelo WhatsApp para dúvidas pontuais relacionadas ao tratamento entre as consultas, dentro das orientações estabelecidas para o acompanhamento.</p>
-          <a href="#" class="btn js-whatsapp">Agendar minha consulta</a>
         </div>
-        <div class="foto-arco foto-arco--bege">
-          <img src="assets/img/atendimento-camila.jpg" alt="Dra. Camila Egypto sentada, de terno preto" width="1000" height="1423" loading="lazy">
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <section id="duvidas" class="faixa faixa--cinza">
-      <div class="container estreito">
-        <h2>Dúvidas frequentes</h2>
-        <div class="faq">
-          <details>
-            <summary>Preciso estar em uma situação grave para procurar um psiquiatra?</summary>
-            <p>Não. Quanto mais cedo identificamos um sofrimento que está causando prejuízo, mais cedo podemos compreender o que está acontecendo e discutir estratégias de cuidado.</p>
-          </details>
-          <details>
-            <summary>Vou precisar tomar medicação?</summary>
-            <p>Não necessariamente. A indicação depende da avaliação clínica e é discutida individualmente.</p>
-          </details>
-          <details>
-            <summary>Uma consulta é suficiente?</summary>
-            <p>Depende do caso. Algumas situações podem ser inicialmente esclarecidas em uma consulta, enquanto outras exigem acompanhamento para avaliação diagnóstica, ajuste terapêutico e monitoramento da evolução.</p>
-          </details>
-          <details>
-            <summary>Psiquiatra e psicólogo fazem a mesma coisa?</summary>
-            <p>Não. São atuações diferentes e frequentemente complementares. Quando houver indicação, o acompanhamento conjunto pode fazer parte do plano terapêutico.</p>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <!-- Encerramento -->
-    <section class="faixa encerramento">
-      <div class="container texto-central">
-        <h2 class="tarja">Cuidar da saúde mental é um processo.</h2>
-        <p class="destaque">Você não precisa esperar o sofrimento se tornar insuportável para começar a cuidar da sua saúde mental.</p>
-        <p>Às vezes, procurar ajuda é justamente o primeiro passo para entender por que as coisas têm sido tão difíceis. Meu compromisso é oferecer um espaço de escuta, ciência e cuidado, para que possamos compreender juntos o que você está vivendo e construir o tratamento mais adequado para você.</p>
-        <div class="acoes">
-          <a href="#" class="btn js-whatsapp">Falar com a Dra. Camila</a>
-          <a href="https://www.instagram.com/camilaegypto.psiquiatria/" class="btn btn--contorno" target="_blank" rel="noopener">Seguir no Instagram</a>
-        </div>
-        <img class="logo-final" src="assets/img/logo.png" alt="Dra. Camila Egypto — Psiquiatria" width="957" height="917" loading="lazy">
       </div>
     </section>
   </main>
 
   <footer class="rodape">
-    <div class="container">
-      <p><strong>Dra. Camila Egypto</strong> · Psiquiatria · CREMEC 29104</p>
-      <p class="contatos">
+    <div class="container rodape__grid">
+      <div>
+        <p class="rodape__nome">Dra. Camila Egypto</p>
+        <p>Psiquiatria · CREMEC 29104</p>
+      </div>
+      <div class="rodape__links">
         <a href="#" class="js-whatsapp">WhatsApp (85) 99103-4586</a>
-        <a href="https://www.instagram.com/camilaegypto.psiquiatria/" target="_blank" rel="noopener">Instagram @camilaegypto.psiquiatria</a>
-      </p>
-      <p class="aviso">Este site tem caráter informativo e não substitui uma consulta. Em situação de crise ou risco, procure o pronto-socorro mais próximo, ligue <a href="tel:192">192 (SAMU)</a> ou <a href="tel:188">188 (CVV)</a>.</p>
-      <p class="copy">© <span id="ano"></span> Dra. Camila Egypto. Todos os direitos reservados.</p>
+        <a href="https://www.instagram.com/camilaegypto.psiquiatria/" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+    <div class="container rodape__base">
+      <p>Em situação de crise ou risco, procure o pronto-socorro mais próximo ou ligue <a href="tel:192">192 (SAMU)</a> ou <a href="tel:188">188 (CVV)</a>.</p>
+      <p>© <span data-ano></span> Dra. Camila Egypto</p>
     </div>
   </footer>
 
-  <a href="#" class="whatsapp-flutuante js-whatsapp" aria-label="Agendar pelo WhatsApp">
+  <a href="#" class="whatsapp js-whatsapp" aria-label="Agendar pelo WhatsApp" data-whatsapp-flutuante>
     <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3C8.8 3 3 8.7 3 15.8c0 2.5.7 4.9 2 7L3 29l6.4-2c2 1.1 4.3 1.7 6.6 1.7 7.2 0 13-5.7 13-12.8S23.2 3 16 3zm0 23.4c-2.1 0-4.2-.6-6-1.7l-.4-.3-3.8 1.2 1.2-3.7-.3-.4a10.4 10.4 0 0 1-1.6-5.6C5.1 9.9 10 5.2 16 5.2s10.9 4.7 10.9 10.6S22 26.4 16 26.4zm6-7.9c-.3-.2-1.9-1-2.2-1.1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.2-.2-.3 0-.5.1-.7l.5-.6.3-.5c.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.5c.2.2 2.4 3.6 5.8 5 .8.3 1.4.5 1.9.7.8.2 1.5.2 2.1.1.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.3.2-1.5-.1-.1-.3-.2-.6-.3z"/></svg>
   </a>
 
-  <script src="assets/script.js"></script>
+  <script src="assets/vendor/lenis.min.js" defer></script>
+  <script src="assets/vendor/gsap.min.js" defer></script>
+  <script src="assets/vendor/ScrollTrigger.min.js" defer></script>
+  <script src="assets/vendor/SplitText.min.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
 </body>
 </html>
