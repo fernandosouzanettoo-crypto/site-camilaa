@@ -139,6 +139,11 @@ export const rodape = {
   registro: "CREMEC 29104",
   // TODO: inserir RQE antes da publicação
   rqe: "",
+  aviso: {
+    texto: "Em situação de crise ou risco, procure o pronto-socorro mais próximo ou ligue",
+    samu: { label: "192 (SAMU)", tel: "tel:192" },
+    cvv: { label: "188 (CVV)", tel: "tel:188" },
+  },
 };
 
 export const whatsappFlutuante = "Agende seu atendimento";

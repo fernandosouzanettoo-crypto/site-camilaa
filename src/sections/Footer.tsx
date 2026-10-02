@@ -29,7 +29,20 @@ export function Footer() {
           </a>
         </div>
       </div>
-      <p className="mx-auto mt-10 max-w-[1600px] text-xs font-light text-claro/60">© {new Date().getFullYear()} {rodape.nome}</p>
+      <div className="mx-auto mt-10 flex max-w-[1600px] flex-col gap-3 text-xs font-light text-claro/60 md:flex-row md:items-center md:justify-between">
+        <p>
+          {rodape.aviso.texto}{" "}
+          <a href={rodape.aviso.samu.tel} className="underline decoration-dourado/50 underline-offset-4 transition-opacity duration-200 hover:opacity-70">
+            {rodape.aviso.samu.label}
+          </a>{" "}
+          ou{" "}
+          <a href={rodape.aviso.cvv.tel} className="underline decoration-dourado/50 underline-offset-4 transition-opacity duration-200 hover:opacity-70">
+            {rodape.aviso.cvv.label}
+          </a>
+          .
+        </p>
+        <p>© {new Date().getFullYear()} {rodape.nome}</p>
+      </div>
     </footer>
   );
 }
