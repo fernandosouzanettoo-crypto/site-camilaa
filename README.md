@@ -1,7 +1,7 @@
 # Dra. Camila Egypto · Psiquiatria
 
 Site de apresentação em React 18 + TypeScript + Vite + Tailwind CSS 3 + Framer Motion + Lenis + React Three Fiber.
-O briefing completo está em [`BRIEFING-SITE.md`](BRIEFING-SITE.md).
+O briefing original está em [`BRIEFING-SITE.md`](BRIEFING-SITE.md), e o prompt que descreve a versão no ar (base para novas mudanças) está em [`PROMPT-SITE-ATUAL.md`](PROMPT-SITE-ATUAL.md).
 
 ## Rodar
 
