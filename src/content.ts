@@ -12,10 +12,10 @@ export const INSTAGRAM_URL = "https://instagram.com/camilaegypto.psiquiatria";
 export const INSTAGRAM_HANDLE = "@camilaegypto.psiquiatria";
 
 export const hero = {
-  titulo: "Você não precisa esperar chegar ao seu limite para procurar ajuda.",
+  titulo: "Ajudo você a construir uma vida que faça sentido para você.",
   // Palavra do título destacada em dourado
-  destaque: "limite",
-  subtitulo: "Cuidar da mente é conectar histórias.",
+  destaque: "sentido",
+  subtitulo: "Cuidado em saúde mental com escuta e um olhar para você como um todo.",
 };
 
 export const nav = [

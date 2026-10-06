@@ -90,8 +90,9 @@ Cada seção é curta. Nada de blocos longos de texto.
 - Navbar: `logo-original.png` (azul) à esquerda. À direita, ícones de Instagram e WhatsApp em traço fino (#152A45, hover #C4AC8F, `aria-label`s "Instagram da Dra. Camila Egypto" e "Agendar pelo WhatsApp"). No desktop, os links "Sobre", "Como funciona", "Avaliações", "Dúvidas" (maiúsculas, tracking-wider, #152A45, hover #C4AC8F) ficam ao lado dos ícones. No mobile: logo + os dois ícones. Entrada: fade com y -20.
 - Foto: `hero-camila-branco` (blazer branco, olhando por cima do ombro; escolhida pela cliente) ocupando a metade direita (desktop), altura total, sem moldura, `object-cover` priorizando rosto e tronco. A borda esquerda se dissolve no fundo com `mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.55) 18%, #000 42%)`, sem linha de corte. `fetchpriority="high"`, preload no `index.html` com `imagesizes="(min-width: 768px) 50vw, 100vw"`. Original em `materiais/fotos/original/hero-camila-branco.jpeg` (1717×2576), WebP 640 e 1280 (1280×1920).
 - Texto à esquerda, alinhado ao centro-baixo (pb ~14vh):
-  - Título em Cormorant Garamond, #152A45, `clamp(2.4rem, 5.5vw, 5.5rem)`, leading-tight: "Você não precisa esperar chegar ao seu limite para procurar ajuda.", com a palavra "limite" em #C4AC8F.
-  - Subtítulo em Montserrat font-light, #152A45 a 70%, `clamp(1rem, 1.6vw, 1.4rem)`: "Cuidar da mente é conectar histórias."
+  - Título em Cormorant Garamond, #152A45, `clamp(2.4rem, 5.5vw, 5.5rem)` (no desktop `clamp(2.2rem, min(5.5vw, 8.5svh), 5.5rem)`, para caber em notebooks baixos e com zoom), leading-tight: "Ajudo você a construir uma vida que faça sentido para você.", com a palavra "sentido" em #C4AC8F.
+  - Subtítulo em Montserrat font-light, #152A45 a 70%, `clamp(1rem, 1.6vw, 1.4rem)`: "Cuidado em saúde mental com escuta e um olhar para você como um todo."
+  - No desktop o bloco de texto tem `min-h-[100svh]` e `pt-36` (reserva o espaço da navbar) e a seção cresce se precisar: o título nunca sobrepõe o logo.
   - ConsultButton abaixo.
 - Mobile: foto em cima (55svh), aproximada (scale 1.45, origem no rosto) para priorizar rosto e tronco, dissolvendo na parte inferior com mask-image vertical; título (4 linhas em 390px), subtítulo e botão abaixo.
 - Entrada: foto com fade + scale 1.08 → 1 (1.6s, expo.out); palavras do título sobem uma a uma de dentro de uma máscara (início 0.35s, stagger 0.06s); subtítulo e botão com fade + leve subida logo após a última palavra.
@@ -166,8 +167,8 @@ Não incluir localização nem modalidade de atendimento.
 - Valor atual: `"Psiquiatria"`. Alternativa pendente de confirmação com o CREMEC: `"Médica · Residente em Psiquiatria (UFC)"` (comentada no código). Para trocar, basta mudar a constante.
 
 **HERO**
-- Título: "Você não precisa esperar chegar ao seu limite para procurar ajuda." (destaque em "limite")
-- Subtítulo: "Cuidar da mente é conectar histórias."
+- Título: "Ajudo você a construir uma vida que faça sentido para você." (destaque em "sentido")
+- Subtítulo: "Cuidado em saúde mental com escuta e um olhar para você como um todo."
 
 **SOBRE MIM**
 - Título: "Sobre mim"
@@ -333,10 +334,11 @@ Mantenha todos os itens válidos a cada mudança:
 10. **Foto da entrada trocada** pela de blazer branco escolhida pela cliente (primeiro a partir de um print, depois substituída pelo arquivo original em alta, 1717×2576). A foto antiga da entrada (`hero-camila`, blazer preto na banqueta) passou para o card 03.
 11. **Card 03 de "Como funciona" com foto:** usa a antiga foto da entrada (`hero-camila`), como os cards 01 e 02.
 12. **Prévia de compartilhamento** (`og-image.jpg`) refeita com a foto nova da entrada; URL com `?v=2` para o WhatsApp não usar a versão antiga em cache.
+13. **Nova frase da entrada** enviada pela cliente ("Ajudo você a construir uma vida que faça sentido para você." / "Cuidado em saúde mental com escuta e um olhar para você como um todo."), destaque em "sentido".
+14. **Correção no computador:** em notebooks com pouca altura (ou zoom do navegador) o título subia por cima do logo; agora o texto reserva o espaço da navbar e o tamanho da fonte também considera a altura da tela. Testado em 1093×530, 1280×600, 1366×657, 1536×730, 1920×960, tablet e celulares.
 
 ### Pendências
 - RQE de Psiquiatria.
-- Possível nova frase para a entrada (a cliente está pensando).
 - Confirmar com o CREMEC a qualificação (trocar `QUALIFICACAO` se for o caso) e a publicação das avaliações.
 - Confirmar com a cliente a menção à especialidade enquanto residente (RQE), ver observação abaixo.
 - Opcional: domínio próprio; avaliar hospedagem com uso comercial permitido (Vercel Pro, Cloudflare Pages ou Netlify).

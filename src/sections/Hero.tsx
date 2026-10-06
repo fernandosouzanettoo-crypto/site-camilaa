@@ -21,7 +21,7 @@ function Titulo() {
   return (
     <h1
       aria-label={hero.titulo}
-      className="font-serif font-medium leading-tight text-marinho text-[clamp(2.4rem,5.5vw,5.5rem)]"
+      className="font-serif font-medium leading-tight text-marinho text-[clamp(2.4rem,5.5vw,5.5rem)] md:text-[clamp(2.2rem,min(5.5vw,8.5svh),5.5rem)]"
     >
       {palavras.map((palavra, i) => {
         const limpa = palavra.replace(/[.,!?;:]/g, "");
@@ -61,7 +61,7 @@ export function Hero() {
     <section
       id="inicio"
       ref={ref}
-      className="relative z-0 flex min-h-[100svh] flex-col overflow-hidden bg-off md:block md:h-[100svh] md:min-h-[620px]"
+      className="relative z-0 flex min-h-[100svh] flex-col overflow-hidden bg-off md:block"
     >
       <Navbar />
 
@@ -90,7 +90,8 @@ export function Hero() {
       </motion.div>
 
       {/* Texto: à esquerda, alinhado ao centro-baixo no desktop; abaixo da foto no celular */}
-      <div className="relative z-10 mx-auto flex w-full max-w-[1600px] flex-1 px-5 pb-12 sm:px-8 md:h-full md:items-end md:px-12 md:pb-[14vh]">
+      {/* No desktop o padding-top reserva o espaço da navbar: o título nunca sobe por cima do logo */}
+      <div className="relative z-10 mx-auto flex w-full max-w-[1600px] flex-1 px-5 pb-12 sm:px-8 md:min-h-[100svh] md:items-end md:px-12 md:pb-[12vh] md:pt-36">
         <div className="-mt-6 w-full md:mt-0 md:w-1/2 md:max-w-[720px] md:pr-8">
           <Titulo />
           <FadeIn delay={fimTitulo - 0.1} y={16}>
