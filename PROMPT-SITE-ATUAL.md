@@ -102,7 +102,8 @@ Cada seção é curta. Nada de blocos longos de texto.
 - Seção escura com cantos superiores arredondados (`secao-sobreposta`), sobrepondo o Hero.
 - Título "Sobre mim" com `.hero-heading`, centralizado, maiúsculas, `clamp(3rem, 12vw, 160px)`. Sem subtítulo.
 - Layout: `sobre-camila` à esquerda (desktop) ou acima (mobile), `rounded-[40px] md:rounded-[60px]`, reveal por clip-path e parallax interno (imagem ~120% da altura deslizando no container). Texto à direita.
-- Texto com AnimatedText (letra por letra, ver seção 11).
+- No desktop a foto fica fixa (`sticky top-24`) enquanto o texto, mais longo, rola. Por isso a seção usa `overflow-clip` (e não `overflow-hidden`, que impediria o sticky).
+- Texto em 6 parágrafos (seção 9), cada um com AnimatedText (letra por letra, ver seção 11), usando a faixa de scroll `["start 0.85", "end 0.55"]` para cada parágrafo terminar de acender ao passar pelo meio da tela.
 
 ### 8.3 QUANDO PROCURAR UM PSIQUIATRA? (faixas em movimento)
 - Título: "Quando procurar um psiquiatra?" (serif, grande, centralizado) e abaixo "Você não precisa esperar chegar ao seu limite para procurar ajuda."
@@ -152,7 +153,13 @@ Não incluir localização nem modalidade de atendimento.
 
 **SOBRE MIM**
 - Título: "Sobre mim"
-- Texto: "Atendimento psiquiátrico com escuta qualificada, precisão clínica e uma abordagem técnica, empática e individualizada. Cada pessoa possui uma história, um contexto e necessidades diferentes. Antes de pensar em um diagnóstico, é preciso compreender a pessoa que está diante de nós."
+- Parágrafos:
+  1. "Sou médica, paraibana, e atualmente moro em Fortaleza, Ceará, onde curso o 2º ano da Residência Médica em Psiquiatria na Universidade Federal do Ceará."
+  2. "Escolhi a Psiquiatria por acreditar que, por trás de cada sintoma, existe uma história que precisa ser compreendida. E é a partir dessa visão que procuro conduzir cada atendimento: com escuta atenta, acolhimento e respeito à individualidade de cada pessoa."
+  3. "Para mim, cuidar da saúde mental vai além de estabelecer um diagnóstico ou prescrever uma medicação. É entender como aquela pessoa vive, o que tem enfrentado, suas relações, sua rotina e o impacto de tudo isso em seu bem-estar."
+  4. "Busco oferecer um cuidado que una empatia e ciência, utilizando as melhores evidências disponíveis para construir, junto com cada paciente, um tratamento individualizado, seguro e possível para a sua realidade."
+  5. "Acredito em uma Psiquiatria humana, na qual o paciente se sinta verdadeiramente ouvido e participe das decisões sobre o próprio tratamento."
+  6. "Porque cuidar da mente também é compreender histórias."
 
 **QUANDO PROCURAR (itens das faixas)**
 - Linha 1: "Depressão e transtorno bipolar" · "Ansiedade, pânico, fobias e TOC" · "TDAH em adultos" · "Insônia e problemas de sono"
@@ -192,7 +199,7 @@ Removidos a pedido da cliente: não há objetos 3D em nenhuma seção, e three, 
 ## 11. COMPONENTES REUTILIZÁVEIS
 - **FadeIn**: wrapper Framer Motion com `whileInView`, viewport `{ once: true, margin: "50px", amount: 0 }`. Props: delay, duration (padrão 0.7), x (padrão 0), y (padrão 30). Easing `[0.25, 0.1, 0.25, 1]`.
 - **Magnet**: efeito magnético usado só no ConsultButton (padding 40, deslocamento = distância / 6, entrada 0.3s ease-out, saída 0.6s ease-in-out). Somente desktop.
-- **AnimatedText**: revelação letra por letra guiada pelo scroll; cada caractere vai de opacity 0.2 a 1 (`useScroll` no parágrafo, offset `['start 0.8', 'end 0.2']`), com placeholder invisível + span animado posicionado. Cor #E6ECF2, font-medium, leading-relaxed, `clamp(1rem, 2vw, 1.35rem)`. Incluir `aria-label` com o texto completo.
+- **AnimatedText**: revelação letra por letra guiada pelo scroll; cada caractere vai de opacity 0.2 a 1 (`useScroll` no parágrafo, offset `['start 0.8', 'end 0.2']`), com placeholder invisível + span animado posicionado. Aceita `offset` opcional (usado no Sobre mim, com vários parágrafos). Cor #E6ECF2, font-medium, leading-relaxed, `clamp(1rem, 2vw, 1.35rem)`. Incluir `aria-label` com o texto completo.
 - **ConsultButton**: pílula (rounded-full) com degradê sutil `linear-gradient(123deg, #0E1D31 0%, #1E3A5F 60%, #0E1D31 100%)`, outline 1px #C4AC8F com outline-offset 3px, texto #F7F4EE, maiúsculas, tracking-widest, `px-8 py-3 sm:px-10 sm:py-3.5 md:px-12 md:py-4`. Hover: preenchimento #C4AC8F deslizando (texto passa a #0E1D31) + magnetismo leve (desktop). Label: "Marcar consulta".
 
 ## 12. MOVIMENTO GLOBAL
@@ -259,7 +266,7 @@ Mantenha todos os itens válidos a cada mudança:
 - [x] Todos os textos em src/content.ts
 - [x] Sem preços; CREMEC 29104 no footer; aviso SAMU 192 / CVV 188 no footer
 - [ ] RQE: pendente (preencher `rodape.rqe` em `src/content.ts` quando a Dra. Camila informar)
-- [x] Lighthouse mobile acima de 85 (último, após o novo Hero: desempenho 92, acessibilidade 100, boas práticas 96, SEO 100)
+- [x] Lighthouse mobile acima de 85 (último, após o novo Hero e o Sobre mim: desempenho 91, acessibilidade 100, boas práticas 96, SEO 100)
 - [x] kit-site-camila.zip removido do repositório
 
 
@@ -274,10 +281,13 @@ Mantenha todos os itens válidos a cada mudança:
    - Hero refeito no layout "claro e editorial" (fundo off-white, logo azul, ícones de Instagram e WhatsApp, foto à direita dissolvendo no fundo, título "Você não precisa esperar chegar ao seu limite para procurar ajuda."). Saíram o nome gigante, o arco e o Magnet do retrato. O link "Contato" da navbar foi substituído pelo ícone de WhatsApp.
    - Objetos 3D removidos e three / React Three Fiber desinstalados.
    - "Sobre" virou "Sobre mim", sem subtítulo, e passou a sobrepor o Hero com cantos arredondados.
-   - Pendente deste lote: novo texto do "Sobre mim" (a mensagem com o texto chegou incompleta) e eventuais itens seguintes.
+   - Novo texto do "Sobre mim" em 6 parágrafos, enviado pela cliente; foto fixa ao lado no desktop e parágrafos acendendo ao passar pelo meio da tela.
 
 ### Pendências
 - RQE de Psiquiatria.
-- Texto novo do "Sobre mim" (aguardando o texto completo da cliente).
-- Restante do lote 1 de ajustes, se houver itens após o 3.
+- Restante do lote 1 de ajustes, se houver itens após o 3 (a mensagem original chegou cortada).
+- Confirmar com a cliente a menção à especialidade enquanto residente (RQE), ver observação abaixo.
 - Opcional: domínio próprio; avaliar hospedagem com uso comercial permitido (Vercel Pro, Cloudflare Pages ou Netlify).
+
+### Observação sobre a especialidade (CFM)
+O texto do "Sobre mim" informa que a Dra. Camila está no 2º ano da Residência em Psiquiatria. Pelas regras de publicidade médica do CFM, o título de especialista (e o RQE) só existe após a conclusão da residência; até lá, a recomendação é não se apresentar como "psiquiatra" ou "especialista em Psiquiatria". O site usa "Psiquiatria" na marca e nos títulos, e "psiquiatra" em alguns textos alternativos das fotos. Vale a cliente confirmar como quer se apresentar (por exemplo, "médica residente em Psiquiatria") antes da divulgação.

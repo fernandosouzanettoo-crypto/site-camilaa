@@ -2,7 +2,12 @@ import { useMotionValueEvent, useScroll } from "framer-motion";
 import { useEffect, useMemo, useRef } from "react";
 import { useReducedMotion } from "../hooks/useMedia";
 
-type Props = { text: string; className?: string };
+type Props = {
+  text: string;
+  className?: string;
+  /** Faixa do scroll em que as letras acendem (padrão do briefing: ["start 0.8", "end 0.2"]). */
+  offset?: ["start 0.8", "end 0.2"] | ["start 0.85", "end 0.55"];
+};
 
 const ESTILO = "text-claro font-medium leading-relaxed text-[clamp(1rem,2vw,1.35rem)]";
 
@@ -12,12 +17,12 @@ const ESTILO = "text-claro font-medium leading-relaxed text-[clamp(1rem,2vw,1.35
  * são escritas direto no DOM a partir de uma única inscrição no scroll (sem um componente
  * animado por letra), para manter o custo baixo no celular.
  */
-export function AnimatedText({ text, className = "" }: Props) {
+export function AnimatedText({ text, className = "", offset = ["start 0.8", "end 0.2"] }: Props) {
   const ref = useRef<HTMLParagraphElement>(null);
   const letras = useRef<HTMLSpanElement[]>([]);
   const ultimo = useRef(-1);
   const reduced = useReducedMotion();
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start 0.8", "end 0.2"] });
+  const { scrollYProgress } = useScroll({ target: ref, offset });
 
   const palavras = useMemo(() => text.split(" "), [text]);
   const total = text.length;

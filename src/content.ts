@@ -20,8 +20,14 @@ export const nav = [
 
 export const sobre = {
   titulo: "Sobre mim",
-  texto:
-    "Atendimento psiquiátrico com escuta qualificada, precisão clínica e uma abordagem técnica, empática e individualizada. Cada pessoa possui uma história, um contexto e necessidades diferentes. Antes de pensar em um diagnóstico, é preciso compreender a pessoa que está diante de nós.",
+  paragrafos: [
+    "Sou médica, paraibana, e atualmente moro em Fortaleza, Ceará, onde curso o 2º ano da Residência Médica em Psiquiatria na Universidade Federal do Ceará.",
+    "Escolhi a Psiquiatria por acreditar que, por trás de cada sintoma, existe uma história que precisa ser compreendida. E é a partir dessa visão que procuro conduzir cada atendimento: com escuta atenta, acolhimento e respeito à individualidade de cada pessoa.",
+    "Para mim, cuidar da saúde mental vai além de estabelecer um diagnóstico ou prescrever uma medicação. É entender como aquela pessoa vive, o que tem enfrentado, suas relações, sua rotina e o impacto de tudo isso em seu bem-estar.",
+    "Busco oferecer um cuidado que una empatia e ciência, utilizando as melhores evidências disponíveis para construir, junto com cada paciente, um tratamento individualizado, seguro e possível para a sua realidade.",
+    "Acredito em uma Psiquiatria humana, na qual o paciente se sinta verdadeiramente ouvido e participe das decisões sobre o próprio tratamento.",
+    "Porque cuidar da mente também é compreender histórias.",
+  ],
 };
 
 export const quandoProcurar = {
