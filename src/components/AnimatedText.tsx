@@ -6,13 +6,13 @@ type Props = {
   text: string;
   className?: string;
   /** Faixa do scroll em que as letras acendem (padrão do briefing: ["start 0.8", "end 0.2"]). */
-  offset?: ["start 0.8", "end 0.2"] | ["start 0.85", "end 0.55"];
+  offset?: ["start 0.8", "end 0.2"] | ["start 0.95", "end 0.8"];
 };
 
 const ESTILO = "text-claro font-medium leading-relaxed text-[clamp(1rem,2vw,1.35rem)]";
 
 /**
- * Revela o texto letra por letra conforme a rolagem (opacidade 0.2 → 1).
+ * Revela o texto letra por letra conforme a rolagem (opacidade 0.2 → 1). O progresso só avança.
  * Cada letra tem um placeholder invisível e um span posicionado por cima; as opacidades
  * são escritas direto no DOM a partir de uma única inscrição no scroll (sem um componente
  * animado por letra), para manter o custo baixo no celular.
@@ -21,6 +21,9 @@ export function AnimatedText({ text, className = "", offset = ["start 0.8", "end
   const ref = useRef<HTMLParagraphElement>(null);
   const letras = useRef<HTMLSpanElement[]>([]);
   const ultimo = useRef(-1);
+  // O texto só acende: depois de aceso não volta a apagar ao rolar para cima,
+  // garantindo opacidade total ao fim da animação
+  const maximo = useRef(0);
   const reduced = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset });
 
@@ -47,10 +50,14 @@ export function AnimatedText({ text, className = "", offset = ["start 0.8", "end
   };
 
   useMotionValueEvent(scrollYProgress, "change", (v) => {
-    if (!reduced) pintar(v);
+    if (reduced || v <= maximo.current) return;
+    maximo.current = v;
+    pintar(v);
   });
   useEffect(() => {
-    if (!reduced) pintar(scrollYProgress.get());
+    if (reduced) return;
+    maximo.current = Math.max(maximo.current, scrollYProgress.get());
+    pintar(maximo.current);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [reduced]);
 

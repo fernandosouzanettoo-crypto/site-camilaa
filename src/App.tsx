@@ -1,6 +1,7 @@
 import { Analytics } from "@vercel/analytics/react";
 import { WhatsAppFloat } from "./components/WhatsAppFloat";
 import { LenisProvider } from "./hooks/useLenis";
+import { Avaliacoes } from "./sections/Avaliacoes";
 import { ComoFunciona } from "./sections/ComoFunciona";
 import { CtaFinal } from "./sections/CtaFinal";
 import { CuidadoCentrado } from "./sections/CuidadoCentrado";
@@ -20,6 +21,7 @@ export default function App() {
           <QuandoProcurar />
           <CuidadoCentrado />
           <ComoFunciona />
+          <Avaliacoes />
           <Duvidas />
           <CtaFinal />
         </main>

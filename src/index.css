@@ -35,6 +35,12 @@
     @apply text-sm uppercase tracking-wider text-marinho transition-colors duration-200 hover:text-dourado md:text-base;
   }
 
+  /* Algarismos alinhados: no Cormorant Garamond o padrão é o estilo antigo ("01" parece "OI") */
+  .num-lining {
+    font-variant-numeric: lining-nums;
+    font-feature-settings: "lnum" 1;
+  }
+
   /* Seções sobrepostas: a partir do Sobre, cada seção que muda de cor sobe sobre a anterior */
   .secao-sobreposta {
     @apply relative -mt-10 rounded-t-[40px] sm:-mt-12 sm:rounded-t-[50px] md:-mt-14 md:rounded-t-[60px];

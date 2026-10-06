@@ -80,14 +80,14 @@ Os efeitos das seções 8 e 10 são obrigatórios mesmo que a referência não p
 
 ## 8. ESTRUTURA E EFEITOS
 Ordem e fundos:
-1. Hero (claro, off-white) → 2. Sobre mim (escuro, sobreposto ao Hero) → 3. Quando procurar (escuro) → 4. Cuidado centrado em você (claro) → 5. Como funciona (escuro) → 6. Dúvidas (claro) → 7. CTA final (escuro) → 8. Footer (escuro)
+1. Hero (claro, off-white) → 2. Sobre mim (escuro, sobreposto ao Hero) → 3. Quando procurar (escuro) → 4. Cuidado centrado em você (claro) → 5. Como funciona (escuro) → 5.1 Avaliações (claro, #avaliacoes; só aparece quando houver textos) → 6. Dúvidas (claro) → 7. CTA final (escuro) → 8. Footer (escuro)
 
 Seções sobrepostas: a partir da seção 2 (Sobre mim, que sobe sobre o Hero claro), cada seção que muda de cor tem `rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px]`, é puxada para cima com `-mt-10 sm:-mt-12 md:-mt-14` e tem z-index maior que a anterior.
 Cada seção é curta. Nada de blocos longos de texto.
 
 ### 8.1 HERO (h-screen) — layout "claro e editorial"
 - Fundo off-white #F7F4EE.
-- Navbar: `logo-original.png` (azul) à esquerda. À direita, ícones de Instagram e WhatsApp em traço fino (#152A45, hover #C4AC8F, `aria-label`s "Instagram da Dra. Camila Egypto" e "Agendar pelo WhatsApp"). No desktop, os links "Sobre", "Como funciona", "Dúvidas" (maiúsculas, tracking-wider, #152A45, hover #C4AC8F) ficam ao lado dos ícones. No mobile: logo + os dois ícones. Entrada: fade com y -20.
+- Navbar: `logo-original.png` (azul) à esquerda. À direita, ícones de Instagram e WhatsApp em traço fino (#152A45, hover #C4AC8F, `aria-label`s "Instagram da Dra. Camila Egypto" e "Agendar pelo WhatsApp"). No desktop, os links "Sobre", "Como funciona", "Avaliações" (só quando a seção tiver textos), "Dúvidas" (maiúsculas, tracking-wider, #152A45, hover #C4AC8F) ficam ao lado dos ícones. No mobile: logo + os dois ícones. Entrada: fade com y -20.
 - Foto: `hero-camila` ocupando a metade direita (desktop), altura total, sem moldura, `object-cover` priorizando rosto e tronco. A borda esquerda se dissolve no fundo com `mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.55) 18%, #000 42%)`, sem linha de corte. `fetchpriority="high"`, preload no `index.html` com `imagesizes="(min-width: 768px) 50vw, 100vw"`.
 - Texto à esquerda, alinhado ao centro-baixo (pb ~14vh):
   - Título em Cormorant Garamond, #152A45, `clamp(2.4rem, 5.5vw, 5.5rem)`, leading-tight: "Você não precisa esperar chegar ao seu limite para procurar ajuda.", com a palavra "limite" em #C4AC8F.
@@ -103,10 +103,11 @@ Cada seção é curta. Nada de blocos longos de texto.
 - Título "Sobre mim" com `.hero-heading`, centralizado, maiúsculas, `clamp(3rem, 12vw, 160px)`. Sem subtítulo.
 - Layout: `sobre-camila` à esquerda (desktop) ou acima (mobile), `rounded-[40px] md:rounded-[60px]`, reveal por clip-path e parallax interno (imagem ~120% da altura deslizando no container). Texto à direita.
 - No desktop a foto fica fixa (`sticky top-24`) enquanto o texto, mais longo, rola. Por isso a seção usa `overflow-clip` (e não `overflow-hidden`, que impediria o sticky).
-- Texto em 6 parágrafos (seção 9), cada um com AnimatedText (letra por letra, ver seção 11), usando a faixa de scroll `["start 0.85", "end 0.55"]` para cada parágrafo terminar de acender ao passar pelo meio da tela.
+- Texto em 4 parágrafos (seção 9), cada um com AnimatedText (letra por letra, ver seção 11), faixa de scroll `["start 0.95", "end 0.8"]`. O progresso só avança: depois de acesos, os parágrafos ficam com opacidade total (não apagam ao rolar para cima).
+- Frase final em destaque, fora do AnimatedText: Cormorant Garamond itálico, #C4AC8F, `clamp(1.5rem, 2.6vw, 2.2rem)`.
 
 ### 8.3 QUANDO PROCURAR UM PSIQUIATRA? (faixas em movimento)
-- Título: "Quando procurar um psiquiatra?" (serif, grande, centralizado) e abaixo "O acompanhamento psiquiátrico também pode ser importante quando mudanças emocionais, comportamentais ou cognitivas começam a comprometer sua qualidade de vida." (frase do PDF; a anterior, "Você não precisa esperar chegar ao seu limite...", passou a ser o título do Hero).
+- Título: "Quando procurar atendimento?" (serif, grande, centralizado). Sem subtítulo.
 - Duas faixas horizontais de TEXTO (não imagens) que se movem com o scroll: linha 1 para a direita, linha 2 para a esquerda. Offset = `(window.scrollY - topoDaSeção + window.innerHeight) * 0.3`; linha 1 `translateX(offset - 200)`, linha 2 `translateX(-(offset - 200))`. Conteúdo triplicado para não ter vazios. Listener de scroll passivo, `willChange: 'transform'`.
 - Itens em Cormorant Garamond grande (`clamp(1.8rem, 5vw, 4.5rem)`), cor #E6ECF2 a 85%, separados por um pequeno losango ou ponto #C4AC8F.
 - Fechamento centralizado abaixo: "Nem todo sofrimento significa um transtorno mental." em #C4AC8F e "Mas todo sofrimento que está limitando a sua vida merece ser compreendido." em #E6ECF2.
@@ -120,6 +121,9 @@ Cada seção é curta. Nada de blocos longos de texto.
   - FadeIn em sequência (delay i * 0.1);
   - desktop: no hover, o número fica #C4AC8F e a linha desliza x: 8px.
 
+### 8.4.1 ALGARISMOS
+Todos os números grandes (01/02/03 do "Cuidado centrado", do "Como funciona" e o contador das avaliações) usam a classe `.num-lining` (`font-variant-numeric: lining-nums; font-feature-settings: "lnum" 1`), porque no Cormorant Garamond o padrão são algarismos de estilo antigo ("01" parecia "OI").
+
 ### 8.5 COMO FUNCIONA (fundo escuro, sobreposta)
 - Título "Como funciona" com `.hero-heading`.
 - 3 cards empilháveis (sticky stacking) com Framer Motion `useScroll` + `useTransform`:
@@ -130,6 +134,16 @@ Cada seção é curta. Nada de blocos longos de texto.
   - Card 01 → `atendimento-camila`
   - Card 02 → `atuacao-camila`
   - Card 03 → sem foto: frase em destaque, serif grande.
+
+- Mobile (abaixo de md): o card tem a altura do conteúdo (sem `h-[85vh]` nem altura fixa), foto com 240px (300px em sm), espaçamento de 24px entre cards; mantém o sticky e a escala. Desktop sem mudanças.
+
+### 8.5.1 AVALIAÇÕES (fundo claro, sobreposta, #avaliacoes)
+- Entre "Como funciona" e "Dúvidas". Título "Avaliações".
+- Pilha de cartões (o da frente e dois atrás, deslocados e menores). Cartão: aspas em #C4AC8F, texto em Cormorant Garamond, rótulo "Paciente". Sem estrelas, notas ou identificação.
+- Interações: arrastar o cartão da frente (limiar 90px ou velocidade), setas anterior/próxima (aria-labels), contador "3 / 9" (`aria-live`, algarismos alinhados), teclado ← → com a pilha focada.
+- Autoplay de 6s, apenas com a seção visível, e que para depois da primeira interação. Com prefers-reduced-motion: sem autoplay, sem arrastar e trocas sem animação.
+- Os cartões aparecem já no primeiro render (sem estado inicial invisível).
+- Os textos ficam em `avaliacoes.textos` (`src/content.ts`), na ordem indicada pela cliente. Enquanto a lista estiver vazia, a seção e o link da navbar não aparecem. PENDENTE: os 9 textos (o item com eles não chegou).
 
 ### 8.6 DÚVIDAS (fundo claro, sobreposta)
 - Título "Dúvidas frequentes" em #152A45, serif.
@@ -154,18 +168,17 @@ Não incluir localização nem modalidade de atendimento.
 **SOBRE MIM**
 - Título: "Sobre mim"
 - Parágrafos:
-  1. "Sou médica, paraibana, e atualmente moro em Fortaleza, Ceará, onde curso o 2º ano da Residência Médica em Psiquiatria na Universidade Federal do Ceará."
-  2. "Escolhi a Psiquiatria por acreditar que, por trás de cada sintoma, existe uma história que precisa ser compreendida. E é a partir dessa visão que procuro conduzir cada atendimento: com escuta atenta, acolhimento e respeito à individualidade de cada pessoa."
+  1. "Sou médica, paraibana, e atualmente moro em Fortaleza, onde faço Residência Médica em Psiquiatria na Universidade Federal do Ceará."
+  2. "Escolhi a Psiquiatria por acreditar que, por trás de cada sintoma, existe uma história que precisa ser compreendida. É a partir dessa visão que conduzo cada atendimento: com escuta atenta, acolhimento e respeito à individualidade de cada pessoa."
   3. "Para mim, cuidar da saúde mental vai além de estabelecer um diagnóstico ou prescrever uma medicação. É entender como aquela pessoa vive, o que tem enfrentado, suas relações, sua rotina e o impacto de tudo isso em seu bem-estar."
-  4. "Busco oferecer um cuidado que una empatia e ciência, utilizando as melhores evidências disponíveis para construir, junto com cada paciente, um tratamento individualizado, seguro e possível para a sua realidade."
-  5. "Acredito em uma Psiquiatria humana, na qual o paciente se sinta verdadeiramente ouvido e participe das decisões sobre o próprio tratamento."
-  6. "Porque cuidar da mente também é compreender histórias."
+  4. "Busco unir empatia e ciência, com as melhores evidências disponíveis, para construir junto com cada paciente um tratamento individualizado, seguro e possível para a sua realidade."
+- Destaque final: "Porque cuidar da mente também é compreender histórias."
 
 **QUANDO PROCURAR**
-- Subtítulo: "O acompanhamento psiquiátrico também pode ser importante quando mudanças emocionais, comportamentais ou cognitivas começam a comprometer sua qualidade de vida."
-- Itens das faixas:
-- Linha 1: "Depressão e transtorno bipolar" · "Ansiedade, pânico, fobias e TOC" · "TDAH em adultos" · "Insônia e problemas de sono"
-- Linha 2: "Transtornos psicóticos" · "Uso de álcool e outras substâncias" · "Transtornos de personalidade" · "Sofrimento psíquico no dia a dia"
+- Título: "Quando procurar atendimento?" (sem subtítulo)
+- Linha 1: "Quando a tristeza não passa" · "Quando a ansiedade limita a rotina" · "Quando o sono não vem" · "Quando a concentração falha"
+- Linha 2: "Quando o trabalho pesa demais" · "Quando os relacionamentos sofrem" · "Quando o uso de álcool preocupa" · "Quando algo não parece bem"
+- Fechamento mantido.
 
 **CUIDADO CENTRADO EM VOCÊ**
 - 01 CIÊNCIA — "Condutas orientadas pelas melhores evidências científicas disponíveis."
@@ -176,6 +189,10 @@ Não incluir localização nem modalidade de atendimento.
 - 01 A consulta — "Um espaço de investigação, escuta e construção conjunta do cuidado. Conversamos sobre sua história, saúde física e mental, sono, rotina, relacionamentos e trabalho."
 - 02 O plano de cuidado — "A partir da avaliação, discutimos juntos as possibilidades: psicoeducação, mudanças de hábitos, psicoterapia, encaminhamentos e, quando houver indicação clínica, tratamento medicamentoso."
 - 03 O acompanhamento — destaque: "Saúde mental é processo, não apenas uma consulta." Texto: "Acompanhar a evolução permite ajustar o tratamento, prevenir recaídas e construir um cuidado sustentável ao longo do tempo."
+
+**AVALIAÇÕES**
+- Título: "Avaliações" · rótulo de cada cartão: "Paciente"
+- Textos: PENDENTES (9, na ordem indicada pela cliente).
 
 **DÚVIDAS FREQUENTES**
 1. "Preciso estar em uma situação grave para procurar um psiquiatra?" — "Não. Quanto mais cedo identificamos um sofrimento que está causando prejuízo, mais cedo podemos compreender o que está acontecendo e discutir estratégias de cuidado."
@@ -201,7 +218,7 @@ Removidos a pedido da cliente: não há objetos 3D em nenhuma seção, e three, 
 ## 11. COMPONENTES REUTILIZÁVEIS
 - **FadeIn**: wrapper Framer Motion com `whileInView`, viewport `{ once: true, margin: "50px", amount: 0 }`. Props: delay, duration (padrão 0.7), x (padrão 0), y (padrão 30). Easing `[0.25, 0.1, 0.25, 1]`.
 - **Magnet**: efeito magnético usado só no ConsultButton (padding 40, deslocamento = distância / 6, entrada 0.3s ease-out, saída 0.6s ease-in-out). Somente desktop.
-- **AnimatedText**: revelação letra por letra guiada pelo scroll; cada caractere vai de opacity 0.2 a 1 (`useScroll` no parágrafo, offset `['start 0.8', 'end 0.2']`), com placeholder invisível + span animado posicionado. Aceita `offset` opcional (usado no Sobre mim, com vários parágrafos). Cor #E6ECF2, font-medium, leading-relaxed, `clamp(1rem, 2vw, 1.35rem)`. Incluir `aria-label` com o texto completo.
+- **AnimatedText**: revelação letra por letra guiada pelo scroll; cada caractere vai de opacity 0.2 a 1 (`useScroll` no parágrafo, offset `['start 0.8', 'end 0.2']`), com placeholder invisível + span animado posicionado. Aceita `offset` opcional (usado no Sobre mim, com vários parágrafos). O progresso só avança (o texto não volta a apagar). Cor #E6ECF2, font-medium, leading-relaxed, `clamp(1rem, 2vw, 1.35rem)`. Incluir `aria-label` com o texto completo.
 - **ConsultButton**: pílula (rounded-full) com degradê sutil `linear-gradient(123deg, #0E1D31 0%, #1E3A5F 60%, #0E1D31 100%)`, outline 1px #C4AC8F com outline-offset 3px, texto #F7F4EE, maiúsculas, tracking-widest, `px-8 py-3 sm:px-10 sm:py-3.5 md:px-12 md:py-4`. Hover: preenchimento #C4AC8F deslizando (texto passa a #0E1D31) + magnetismo leve (desktop). Label: "Marcar consulta".
 
 ## 12. MOVIMENTO GLOBAL
@@ -268,7 +285,7 @@ Mantenha todos os itens válidos a cada mudança:
 - [x] Todos os textos em src/content.ts
 - [x] Sem preços; CREMEC 29104 no footer; aviso SAMU 192 / CVV 188 no footer
 - [ ] RQE: pendente (preencher `rodape.rqe` em `src/content.ts` quando a Dra. Camila informar)
-- [x] Lighthouse mobile acima de 85 (último, após o novo Hero e o Sobre mim: desempenho 91, acessibilidade 100, boas práticas 96, SEO 100)
+- [x] Lighthouse mobile acima de 85 (último: desempenho 93, acessibilidade 100, boas práticas 96, SEO 100)
 - [x] kit-site-camila.zip removido do repositório
 
 
@@ -286,11 +303,19 @@ Mantenha todos os itens válidos a cada mudança:
    - Novo texto do "Sobre mim" em 6 parágrafos, enviado pela cliente; foto fixa ao lado no desktop e parágrafos acendendo ao passar pelo meio da tela.
    - Subtítulo do "Quando procurar um psiquiatra?" trocado (a frase antiga ficou repetida com o novo título do Hero) por uma frase do PDF: "O acompanhamento psiquiátrico também pode ser importante quando mudanças emocionais, comportamentais ou cognitivas começam a comprometer sua qualidade de vida."
 
+8. **Revisão do lote 1** (o pedido original chegou cortado no item 3; os itens 4 a 8 nunca foram recebidos):
+   - "Quando procurar" virou "Quando procurar atendimento?", sem subtítulo, com novos itens nas faixas.
+   - "Sobre mim" com o texto revisado em 4 parágrafos (sem "2º ano") e a frase final em destaque dourado itálico. O AnimatedText passou a só avançar e a terminar mais cedo, garantindo opacidade total.
+   - Algarismos alinhados (`.num-lining`) em todos os números grandes.
+   - Cards de "Como funciona" no mobile com a altura do conteúdo.
+   - Seção de Avaliações (pilha de cartões) implementada, aguardando os 9 textos para aparecer.
+
 ### Pendências
 - RQE de Psiquiatria.
-- Restante do lote 1 de ajustes, se houver itens após o 3 (a mensagem original chegou cortada).
+- Os 9 textos das avaliações (e demais detalhes do item 5 original, se houver).
+- Os itens 4, 6, 7 e 8 do pedido de ajustes original, que nunca chegaram.
 - Confirmar com a cliente a menção à especialidade enquanto residente (RQE), ver observação abaixo.
 - Opcional: domínio próprio; avaliar hospedagem com uso comercial permitido (Vercel Pro, Cloudflare Pages ou Netlify).
 
 ### Observação sobre a especialidade (CFM)
-O texto do "Sobre mim" informa que a Dra. Camila está no 2º ano da Residência em Psiquiatria. Pelas regras de publicidade médica do CFM, o título de especialista (e o RQE) só existe após a conclusão da residência; até lá, a recomendação é não se apresentar como "psiquiatra" ou "especialista em Psiquiatria". O site usa "Psiquiatria" na marca e nos títulos, e "psiquiatra" em alguns textos alternativos das fotos. Vale a cliente confirmar como quer se apresentar (por exemplo, "médica residente em Psiquiatria") antes da divulgação.
+O texto do "Sobre mim" informa que a Dra. Camila faz Residência Médica em Psiquiatria. Pelas regras de publicidade médica do CFM, o título de especialista (e o RQE) só existe após a conclusão da residência; até lá, a recomendação é não se apresentar como "psiquiatra" ou "especialista em Psiquiatria". O site usa "Psiquiatria" na marca e nos títulos, e "psiquiatra" em alguns textos alternativos das fotos. Vale a cliente confirmar como quer se apresentar (por exemplo, "médica residente em Psiquiatria") antes da divulgação.

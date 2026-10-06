@@ -54,10 +54,13 @@ export function Sobre() {
           </motion.div>
 
           <div className="mx-auto flex max-w-xl flex-col gap-6 md:mx-0 md:gap-7">
-            {/* Vários parágrafos: cada um acende ao passar pelo meio da tela, para não ficar texto apagado na leitura */}
+            {/* Vários parágrafos: cada um acende enquanto entra na tela e fica aceso, para não ficar texto apagado na leitura */}
             {sobre.paragrafos.map((paragrafo) => (
-              <AnimatedText key={paragrafo} text={paragrafo} offset={["start 0.85", "end 0.55"]} />
+              <AnimatedText key={paragrafo} text={paragrafo} offset={["start 0.95", "end 0.8"]} />
             ))}
+            <FadeIn delay={0.1}>
+              <p className="mt-2 font-serif text-[clamp(1.5rem,2.6vw,2.2rem)] italic leading-snug text-dourado">{sobre.destaque}</p>
+            </FadeIn>
           </div>
         </div>
       </div>

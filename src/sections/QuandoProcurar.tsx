@@ -63,9 +63,6 @@ export function QuandoProcurar() {
         <FadeIn>
           <h2 className="font-serif text-[clamp(2.2rem,6vw,5.5rem)] font-medium leading-[1.02] text-claro">{quandoProcurar.titulo}</h2>
         </FadeIn>
-        <FadeIn delay={0.1}>
-          <p className="mx-auto mt-5 max-w-xl text-[clamp(0.9rem,1.4vw,1.1rem)] font-light text-claro/70 md:mt-7">{quandoProcurar.subtitulo}</p>
-        </FadeIn>
       </div>
 
       <ul className="sr-only">

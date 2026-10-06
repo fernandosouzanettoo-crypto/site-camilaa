@@ -15,37 +15,35 @@ export const hero = {
 export const nav = [
   { label: "Sobre", href: "#sobre" },
   { label: "Como funciona", href: "#como-funciona" },
+  { label: "Avaliações", href: "#avaliacoes" },
   { label: "Dúvidas", href: "#duvidas" },
 ];
 
 export const sobre = {
   titulo: "Sobre mim",
   paragrafos: [
-    "Sou médica, paraibana, e atualmente moro em Fortaleza, Ceará, onde curso o 2º ano da Residência Médica em Psiquiatria na Universidade Federal do Ceará.",
-    "Escolhi a Psiquiatria por acreditar que, por trás de cada sintoma, existe uma história que precisa ser compreendida. E é a partir dessa visão que procuro conduzir cada atendimento: com escuta atenta, acolhimento e respeito à individualidade de cada pessoa.",
+    "Sou médica, paraibana, e atualmente moro em Fortaleza, onde faço Residência Médica em Psiquiatria na Universidade Federal do Ceará.",
+    "Escolhi a Psiquiatria por acreditar que, por trás de cada sintoma, existe uma história que precisa ser compreendida. É a partir dessa visão que conduzo cada atendimento: com escuta atenta, acolhimento e respeito à individualidade de cada pessoa.",
     "Para mim, cuidar da saúde mental vai além de estabelecer um diagnóstico ou prescrever uma medicação. É entender como aquela pessoa vive, o que tem enfrentado, suas relações, sua rotina e o impacto de tudo isso em seu bem-estar.",
-    "Busco oferecer um cuidado que una empatia e ciência, utilizando as melhores evidências disponíveis para construir, junto com cada paciente, um tratamento individualizado, seguro e possível para a sua realidade.",
-    "Acredito em uma Psiquiatria humana, na qual o paciente se sinta verdadeiramente ouvido e participe das decisões sobre o próprio tratamento.",
-    "Porque cuidar da mente também é compreender histórias.",
+    "Busco unir empatia e ciência, com as melhores evidências disponíveis, para construir junto com cada paciente um tratamento individualizado, seguro e possível para a sua realidade.",
   ],
+  // Frase final em destaque (Cormorant Garamond itálico, dourado)
+  destaque: "Porque cuidar da mente também é compreender histórias.",
 };
 
 export const quandoProcurar = {
-  titulo: "Quando procurar um psiquiatra?",
-  // A frase "Você não precisa esperar chegar ao seu limite..." passou a ser o título do Hero
-  subtitulo:
-    "O acompanhamento psiquiátrico também pode ser importante quando mudanças emocionais, comportamentais ou cognitivas começam a comprometer sua qualidade de vida.",
+  titulo: "Quando procurar atendimento?",
   linha1: [
-    "Depressão e transtorno bipolar",
-    "Ansiedade, pânico, fobias e TOC",
-    "TDAH em adultos",
-    "Insônia e problemas de sono",
+    "Quando a tristeza não passa",
+    "Quando a ansiedade limita a rotina",
+    "Quando o sono não vem",
+    "Quando a concentração falha",
   ],
   linha2: [
-    "Transtornos psicóticos",
-    "Uso de álcool e outras substâncias",
-    "Transtornos de personalidade",
-    "Sofrimento psíquico no dia a dia",
+    "Quando o trabalho pesa demais",
+    "Quando os relacionamentos sofrem",
+    "Quando o uso de álcool preocupa",
+    "Quando algo não parece bem",
   ],
   fechamento1: "Nem todo sofrimento significa um transtorno mental.",
   fechamento2: "Mas todo sofrimento que está limitando a sua vida merece ser compreendido.",
@@ -100,6 +98,14 @@ export const comoFunciona: { titulo: string; cards: CardComoFunciona[] } = {
       texto: "Acompanhar a evolução permite ajustar o tratamento, prevenir recaídas e construir um cuidado sustentável ao longo do tempo.",
     },
   ],
+};
+
+export const avaliacoes = {
+  titulo: "Avaliações",
+  rotulo: "Paciente",
+  // Os 9 textos, na ordem indicada pela cliente (sem nomes, estrelas ou notas).
+  // TODO: inserir os textos. Enquanto a lista estiver vazia, a seção e o link da navbar não aparecem.
+  textos: [] as string[],
 };
 
 export const duvidas = {

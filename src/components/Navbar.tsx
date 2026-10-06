@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { INSTAGRAM_URL, WHATSAPP_URL, nav, navInstagramLabel, navWhatsappLabel } from "../content";
+import { INSTAGRAM_URL, WHATSAPP_URL, avaliacoes, nav, navInstagramLabel, navWhatsappLabel } from "../content";
 import { useScrollTo } from "../hooks/useLenis";
 import { EASE } from "./FadeIn";
 import { InstagramIcon, WhatsAppLineIcon } from "./Icons";
@@ -23,7 +23,10 @@ export function Navbar() {
 
         <div className="flex items-center gap-6 lg:gap-10">
           <nav aria-label="Principal" className="hidden items-center gap-8 md:flex lg:gap-12">
-            {nav.map((item) => (
+            {nav
+              // O link de Avaliações só aparece quando a seção tem textos
+              .filter((item) => item.href !== "#avaliacoes" || avaliacoes.textos.length > 0)
+              .map((item) => (
               <a key={item.label} href={item.href} className="nav-link" onClick={(e) => { e.preventDefault(); scrollTo(item.href); }}>
                 {item.label}
               </a>

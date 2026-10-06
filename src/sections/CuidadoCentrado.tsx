@@ -26,7 +26,7 @@ export function CuidadoCentrado() {
                   whileHover={hover ? { x: 8 } : undefined}
                   transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
                 >
-                  <span className="font-serif font-medium leading-none text-marinho text-[clamp(3rem,10vw,140px)] transition-colors duration-500 group-hover:text-dourado">
+                  <span className="num-lining font-serif font-medium leading-none text-marinho text-[clamp(3rem,10vw,140px)] transition-colors duration-500 group-hover:text-dourado">
                     {item.numero}
                   </span>
                   <div>

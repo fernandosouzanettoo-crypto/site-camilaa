@@ -13,13 +13,14 @@ function Card({ card, index, progresso, reduced }: { card: CardComoFunciona; ind
   const scale = useTransform(progresso, [index / total, 1], [1, reduced ? 1 : escalaFinal]);
 
   return (
-    <div className="sticky top-24 flex h-[85vh] items-start justify-center md:top-32">
+    // Abaixo de md o card tem a altura do conteúdo (sem 85vh fixo), mantendo o sticky e a escala
+    <div className="sticky top-24 flex items-start justify-center pb-6 md:top-32 md:h-[85vh] md:pb-0">
       <motion.article
         style={{ scale, top: `${index * 28}px` }}
-        className="relative flex h-[min(74vh,640px)] w-full origin-top flex-col gap-5 overflow-hidden rounded-[40px] border border-dourado/40 bg-marinho-escuro p-5 shadow-[0_-30px_60px_-30px_rgba(0,0,0,0.6)] sm:rounded-[50px] sm:p-6 md:flex-row md:gap-10 md:rounded-[60px] md:p-8"
+        className="relative flex w-full origin-top flex-col gap-5 md:h-[min(74vh,640px)] overflow-hidden rounded-[40px] border border-dourado/40 bg-marinho-escuro p-5 shadow-[0_-30px_60px_-30px_rgba(0,0,0,0.6)] sm:rounded-[50px] sm:p-6 md:flex-row md:gap-10 md:rounded-[60px] md:p-8"
       >
         {card.foto && (
-          <div className="relative h-[34%] shrink-0 overflow-hidden rounded-[32px] bg-[#c9cacc] md:order-2 md:h-full md:w-[44%] md:rounded-[40px]">
+          <div className="relative h-[240px] shrink-0 overflow-hidden rounded-[32px] bg-[#c9cacc] sm:h-[300px] md:order-2 md:h-full md:w-[44%] md:rounded-[40px]">
             <Picture
               nome={card.foto.nome}
               alt={card.foto.alt}
@@ -29,7 +30,7 @@ function Card({ card, index, progresso, reduced }: { card: CardComoFunciona; ind
           </div>
         )}
         <div className="flex flex-1 flex-col gap-4 p-2 sm:p-4 md:justify-between md:gap-0 md:p-6">
-          <span className="font-serif font-medium leading-none text-dourado text-[clamp(2.6rem,9vw,8.5rem)]">{card.numero}</span>
+          <span className="num-lining font-serif font-medium leading-none text-dourado text-[clamp(2.6rem,9vw,8.5rem)]">{card.numero}</span>
           <div>
             <h3 className="font-serif font-medium leading-tight text-claro text-[clamp(1.8rem,3.6vw,3.4rem)]">{card.titulo}</h3>
             {card.destaque && (
