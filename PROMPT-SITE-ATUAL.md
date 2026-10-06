@@ -106,7 +106,7 @@ Cada seção é curta. Nada de blocos longos de texto.
 - Texto em 6 parágrafos (seção 9), cada um com AnimatedText (letra por letra, ver seção 11), usando a faixa de scroll `["start 0.85", "end 0.55"]` para cada parágrafo terminar de acender ao passar pelo meio da tela.
 
 ### 8.3 QUANDO PROCURAR UM PSIQUIATRA? (faixas em movimento)
-- Título: "Quando procurar um psiquiatra?" (serif, grande, centralizado) e abaixo "Você não precisa esperar chegar ao seu limite para procurar ajuda."
+- Título: "Quando procurar um psiquiatra?" (serif, grande, centralizado) e abaixo "O acompanhamento psiquiátrico também pode ser importante quando mudanças emocionais, comportamentais ou cognitivas começam a comprometer sua qualidade de vida." (frase do PDF; a anterior, "Você não precisa esperar chegar ao seu limite...", passou a ser o título do Hero).
 - Duas faixas horizontais de TEXTO (não imagens) que se movem com o scroll: linha 1 para a direita, linha 2 para a esquerda. Offset = `(window.scrollY - topoDaSeção + window.innerHeight) * 0.3`; linha 1 `translateX(offset - 200)`, linha 2 `translateX(-(offset - 200))`. Conteúdo triplicado para não ter vazios. Listener de scroll passivo, `willChange: 'transform'`.
 - Itens em Cormorant Garamond grande (`clamp(1.8rem, 5vw, 4.5rem)`), cor #E6ECF2 a 85%, separados por um pequeno losango ou ponto #C4AC8F.
 - Fechamento centralizado abaixo: "Nem todo sofrimento significa um transtorno mental." em #C4AC8F e "Mas todo sofrimento que está limitando a sua vida merece ser compreendido." em #E6ECF2.
@@ -161,7 +161,9 @@ Não incluir localização nem modalidade de atendimento.
   5. "Acredito em uma Psiquiatria humana, na qual o paciente se sinta verdadeiramente ouvido e participe das decisões sobre o próprio tratamento."
   6. "Porque cuidar da mente também é compreender histórias."
 
-**QUANDO PROCURAR (itens das faixas)**
+**QUANDO PROCURAR**
+- Subtítulo: "O acompanhamento psiquiátrico também pode ser importante quando mudanças emocionais, comportamentais ou cognitivas começam a comprometer sua qualidade de vida."
+- Itens das faixas:
 - Linha 1: "Depressão e transtorno bipolar" · "Ansiedade, pânico, fobias e TOC" · "TDAH em adultos" · "Insônia e problemas de sono"
 - Linha 2: "Transtornos psicóticos" · "Uso de álcool e outras substâncias" · "Transtornos de personalidade" · "Sofrimento psíquico no dia a dia"
 
@@ -282,6 +284,7 @@ Mantenha todos os itens válidos a cada mudança:
    - Objetos 3D removidos e three / React Three Fiber desinstalados.
    - "Sobre" virou "Sobre mim", sem subtítulo, e passou a sobrepor o Hero com cantos arredondados.
    - Novo texto do "Sobre mim" em 6 parágrafos, enviado pela cliente; foto fixa ao lado no desktop e parágrafos acendendo ao passar pelo meio da tela.
+   - Subtítulo do "Quando procurar um psiquiatra?" trocado (a frase antiga ficou repetida com o novo título do Hero) por uma frase do PDF: "O acompanhamento psiquiátrico também pode ser importante quando mudanças emocionais, comportamentais ou cognitivas começam a comprometer sua qualidade de vida."
 
 ### Pendências
 - RQE de Psiquiatria.

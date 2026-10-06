@@ -32,7 +32,9 @@ export const sobre = {
 
 export const quandoProcurar = {
   titulo: "Quando procurar um psiquiatra?",
-  subtitulo: "Você não precisa esperar chegar ao seu limite para procurar ajuda.",
+  // A frase "Você não precisa esperar chegar ao seu limite..." passou a ser o título do Hero
+  subtitulo:
+    "O acompanhamento psiquiátrico também pode ser importante quando mudanças emocionais, comportamentais ou cognitivas começam a comprometer sua qualidade de vida.",
   linha1: [
     "Depressão e transtorno bipolar",
     "Ansiedade, pânico, fobias e TOC",
