@@ -88,12 +88,12 @@ Cada seção é curta. Nada de blocos longos de texto.
 ### 8.1 HERO (h-screen) — layout "claro e editorial"
 - Fundo off-white #F7F4EE.
 - Navbar: `logo-original.png` (azul) à esquerda. À direita, ícones de Instagram e WhatsApp em traço fino (#152A45, hover #C4AC8F, `aria-label`s "Instagram da Dra. Camila Egypto" e "Agendar pelo WhatsApp"). No desktop, os links "Sobre", "Como funciona", "Avaliações", "Dúvidas" (maiúsculas, tracking-wider, #152A45, hover #C4AC8F) ficam ao lado dos ícones. No mobile: logo + os dois ícones. Entrada: fade com y -20.
-- Foto: `hero-camila-branco` (blazer branco, olhando por cima do ombro; escolhida pela cliente) ocupando a metade direita (desktop), altura total, sem moldura, `object-cover` priorizando rosto e tronco. A borda esquerda se dissolve no fundo com `mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.55) 18%, #000 42%)`, sem linha de corte. `fetchpriority="high"`, preload no `index.html` com `imagesizes="(min-width: 768px) 50vw, 100vw"`. PROVISÓRIO: a foto veio de um print do perfil (739×740px, salvo em `materiais/fotos/original/hero-camila-branco-PRINT-provisorio.jpeg`), tratada e ampliada para 1280px; trocar pelo arquivo original assim que chegar (mesmos nomes `hero-camila-branco-640.webp` e `-1280.webp`).
+- Foto: `hero-camila-branco` (blazer branco, olhando por cima do ombro; escolhida pela cliente) ocupando a metade direita (desktop), altura total, sem moldura, `object-cover` priorizando rosto e tronco. A borda esquerda se dissolve no fundo com `mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.55) 18%, #000 42%)`, sem linha de corte. `fetchpriority="high"`, preload no `index.html` com `imagesizes="(min-width: 768px) 50vw, 100vw"`. Original em `materiais/fotos/original/hero-camila-branco.jpeg` (1717×2576), WebP 640 e 1280 (1280×1920).
 - Texto à esquerda, alinhado ao centro-baixo (pb ~14vh):
   - Título em Cormorant Garamond, #152A45, `clamp(2.4rem, 5.5vw, 5.5rem)`, leading-tight: "Você não precisa esperar chegar ao seu limite para procurar ajuda.", com a palavra "limite" em #C4AC8F.
   - Subtítulo em Montserrat font-light, #152A45 a 70%, `clamp(1rem, 1.6vw, 1.4rem)`: "Cuidar da mente é conectar histórias."
   - ConsultButton abaixo.
-- Mobile: foto em cima (55svh), sem zoom (a foto já é próxima do rosto), dissolvendo na parte inferior com mask-image vertical; título (4 linhas em 390px), subtítulo e botão abaixo.
+- Mobile: foto em cima (55svh), aproximada (scale 1.45, origem no rosto) para priorizar rosto e tronco, dissolvendo na parte inferior com mask-image vertical; título (4 linhas em 390px), subtítulo e botão abaixo.
 - Entrada: foto com fade + scale 1.08 → 1 (1.6s, expo.out); palavras do título sobem uma a uma de dentro de uma máscara (início 0.35s, stagger 0.06s); subtítulo e botão com fade + leve subida logo após a última palavra.
 - Parallax: a foto desce mais devagar que o texto no scroll (desktop; 50% no mobile).
 - Não há mais título gigante com `.hero-heading`, moldura em arco nem Magnet no retrato.
@@ -330,11 +330,11 @@ Mantenha todos os itens válidos a cada mudança:
    - Regra "NÃO QUERO" atualizada: depoimentos inventados proibidos; avaliações reais permitidas, sem estrelas, notas ou identificação.
    - `html { position: relative }` para o useScroll do Framer Motion medir corretamente (removia um aviso no console de desenvolvimento).
 
-10. **Foto da entrada trocada** pela de blazer branco escolhida pela cliente (provisoriamente a partir de um print; aguardando o arquivo original). A foto antiga da entrada (`hero-camila`, blazer preto na banqueta) ficou sem uso no site e é candidata ao card 03 de "Como funciona", se a cliente aprovar. A imagem de compartilhamento (`og-image.jpg`) continua com a foto antiga.
+10. **Foto da entrada trocada** pela de blazer branco escolhida pela cliente (primeiro a partir de um print, depois substituída pelo arquivo original em alta, 1717×2576). A foto antiga da entrada (`hero-camila`, blazer preto na banqueta) ficou sem uso no site e é candidata ao card 03 de "Como funciona", se a cliente aprovar. A imagem de compartilhamento (`og-image.jpg`) continua com a foto antiga.
 
 ### Pendências
 - RQE de Psiquiatria.
-- Arquivo original da foto de blazer branco (substituir a versão provisória feita a partir do print).
+- Refazer a `og-image.jpg` (prévia de compartilhamento) com a foto nova, se a cliente quiser.
 - Card 03 de "Como funciona": foto nova ou reaproveitar `hero-camila`, se a cliente aprovar.
 - Possível nova frase para a entrada (a cliente está pensando).
 - Confirmar com o CREMEC a qualificação (trocar `QUALIFICACAO` se for o caso) e a publicação das avaliações.

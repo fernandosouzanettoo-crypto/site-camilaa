@@ -82,9 +82,9 @@ export function Hero() {
             sizes="(min-width: 768px) 50vw, 100vw"
             prioridade
             largura={1280}
-            altura={1282}
-            // Foto já próxima do rosto: sem zoom; o enquadramento prioriza rosto e tronco
-            className="h-full w-full object-cover object-[50%_20%] md:object-[45%_30%]"
+            altura={1920}
+            // No celular a foto é aproximada (origem no rosto) para priorizar rosto e tronco
+            className="h-full w-full origin-[60%_30%] scale-[1.45] object-cover object-[50%_22%] md:scale-100 md:object-[45%_30%]"
           />
         </motion.div>
       </motion.div>
