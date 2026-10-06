@@ -80,14 +80,14 @@ Os efeitos das seções 8 e 10 são obrigatórios mesmo que a referência não p
 
 ## 8. ESTRUTURA E EFEITOS
 Ordem e fundos:
-1. Hero (claro, off-white) → 2. Sobre mim (escuro, sobreposto ao Hero) → 3. Quando procurar (escuro) → 4. Cuidado centrado em você (claro) → 5. Como funciona (escuro) → 5.1 Avaliações (claro, #avaliacoes; só aparece quando houver textos) → 6. Dúvidas (claro) → 7. CTA final (escuro) → 8. Footer (escuro)
+1. Hero (claro, off-white) → 2. Sobre mim (escuro, sobreposto ao Hero) → 3. Quando procurar (escuro) → 4. Cuidado centrado em você (claro) → 5. Como funciona (escuro) → 5.1 Avaliações "O que dizem os pacientes" (claro, #avaliacoes) → 6. Dúvidas (claro) → 7. CTA final (escuro) → 8. Footer (escuro)
 
 Seções sobrepostas: a partir da seção 2 (Sobre mim, que sobe sobre o Hero claro), cada seção que muda de cor tem `rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px]`, é puxada para cima com `-mt-10 sm:-mt-12 md:-mt-14` e tem z-index maior que a anterior.
 Cada seção é curta. Nada de blocos longos de texto.
 
 ### 8.1 HERO (h-screen) — layout "claro e editorial"
 - Fundo off-white #F7F4EE.
-- Navbar: `logo-original.png` (azul) à esquerda. À direita, ícones de Instagram e WhatsApp em traço fino (#152A45, hover #C4AC8F, `aria-label`s "Instagram da Dra. Camila Egypto" e "Agendar pelo WhatsApp"). No desktop, os links "Sobre", "Como funciona", "Avaliações" (só quando a seção tiver textos), "Dúvidas" (maiúsculas, tracking-wider, #152A45, hover #C4AC8F) ficam ao lado dos ícones. No mobile: logo + os dois ícones. Entrada: fade com y -20.
+- Navbar: `logo-original.png` (azul) à esquerda. À direita, ícones de Instagram e WhatsApp em traço fino (#152A45, hover #C4AC8F, `aria-label`s "Instagram da Dra. Camila Egypto" e "Agendar pelo WhatsApp"). No desktop, os links "Sobre", "Como funciona", "Avaliações", "Dúvidas" (maiúsculas, tracking-wider, #152A45, hover #C4AC8F) ficam ao lado dos ícones. No mobile: logo + os dois ícones. Entrada: fade com y -20.
 - Foto: `hero-camila` ocupando a metade direita (desktop), altura total, sem moldura, `object-cover` priorizando rosto e tronco. A borda esquerda se dissolve no fundo com `mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.55) 18%, #000 42%)`, sem linha de corte. `fetchpriority="high"`, preload no `index.html` com `imagesizes="(min-width: 768px) 50vw, 100vw"`.
 - Texto à esquerda, alinhado ao centro-baixo (pb ~14vh):
   - Título em Cormorant Garamond, #152A45, `clamp(2.4rem, 5.5vw, 5.5rem)`, leading-tight: "Você não precisa esperar chegar ao seu limite para procurar ajuda.", com a palavra "limite" em #C4AC8F.
@@ -138,12 +138,12 @@ Todos os números grandes (01/02/03 do "Cuidado centrado", do "Como funciona" e 
 - Mobile (abaixo de md): o card tem a altura do conteúdo (sem `h-[85vh]` nem altura fixa), foto com 240px (300px em sm), espaçamento de 24px entre cards; mantém o sticky e a escala. Desktop sem mudanças.
 
 ### 8.5.1 AVALIAÇÕES (fundo claro, sobreposta, #avaliacoes)
-- Entre "Como funciona" e "Dúvidas". Título "Avaliações".
-- Pilha de cartões (o da frente e dois atrás, deslocados e menores). Cartão: aspas em #C4AC8F, texto em Cormorant Garamond, rótulo "Paciente". Sem estrelas, notas ou identificação.
+- Entre "Como funciona" e "Dúvidas". Título "O que dizem os pacientes" (o link da navbar continua "Avaliações").
+- Fundo off-white #F7F4EE. Pilha de cartões brancos (o da frente e dois atrás, deslocados e menores), altura 340px (os 9 textos cabem até em 320px de largura). Cartão: aspas grandes (5.5–6.5rem) em #C4AC8F, texto em Cormorant Garamond #152A45, rótulo "Paciente" em #152A45 a 70% com um filete dourado antes (o rótulo em dourado sobre branco não passava no contraste AA). Sem estrelas, notas, nomes ou iniciais.
 - Interações: arrastar o cartão da frente (limiar 90px ou velocidade), setas anterior/próxima (aria-labels), contador "3 / 9" (`aria-live`, algarismos alinhados), teclado ← → com a pilha focada.
 - Autoplay de 6s, apenas com a seção visível, e que para depois da primeira interação. Com prefers-reduced-motion: sem autoplay, sem arrastar e trocas sem animação.
 - Os cartões aparecem já no primeiro render (sem estado inicial invisível).
-- Os textos ficam em `avaliacoes.textos` (`src/content.ts`), na ordem indicada pela cliente. Enquanto a lista estiver vazia, a seção e o link da navbar não aparecem. PENDENTE: os 9 textos (o item com eles não chegou).
+- Os textos ficam em `avaliacoes.textos` (`src/content.ts`), na ordem indicada pela cliente (seção 9). Se a lista ficar vazia, a seção e o link da navbar deixam de aparecer.
 
 ### 8.6 DÚVIDAS (fundo claro, sobreposta)
 - Título "Dúvidas frequentes" em #152A45, serif.
@@ -160,6 +160,10 @@ Deixe um campo para o RQE oculto, com o comentário `// TODO: inserir RQE antes 
 Não incluir localização nem modalidade de atendimento.
 
 ## 9. TEXTOS (centralizar em `src/content.ts`)
+
+**QUALIFICAÇÃO**
+- Constante única `QUALIFICACAO` em `src/content.ts`, usada em todo lugar onde "Psiquiatria" aparece como qualificação: rodapé, textos alternativos do logo e da foto do Hero, `<title>`, `og:title` e `og:image:alt` (no `index.html` via placeholder `%QUALIFICACAO%`, substituído no build por um plugin no `vite.config.ts`).
+- Valor atual: `"Psiquiatria"`. Alternativa pendente de confirmação com o CREMEC: `"Médica · Residente em Psiquiatria (UFC)"` (comentada no código). Para trocar, basta mudar a constante.
 
 **HERO**
 - Título: "Você não precisa esperar chegar ao seu limite para procurar ajuda." (destaque em "limite")
@@ -190,9 +194,17 @@ Não incluir localização nem modalidade de atendimento.
 - 02 O plano de cuidado — "A partir da avaliação, discutimos juntos as possibilidades: psicoeducação, mudanças de hábitos, psicoterapia, encaminhamentos e, quando houver indicação clínica, tratamento medicamentoso."
 - 03 O acompanhamento — destaque: "Saúde mental é processo, não apenas uma consulta." Texto: "Acompanhar a evolução permite ajustar o tratamento, prevenir recaídas e construir um cuidado sustentável ao longo do tempo."
 
-**AVALIAÇÕES**
-- Título: "Avaliações" · rótulo de cada cartão: "Paciente"
-- Textos: PENDENTES (9, na ordem indicada pela cliente).
+**AVALIAÇÕES** (avaliações reais, enviadas pela cliente; usar exatamente estes, nesta ordem)
+- Título: "O que dizem os pacientes" · rótulo de cada cartão: "Paciente"
+  1. "Médica muito profissional, atenciosa e empática, conduzindo o atendimento com acolhimento, respeito e cuidado."
+  2. "Nunca havia feito psiquiatra, mas ela me acolheu mais que tudo! Estou impressionada com tamanha dedicação e respeito. Muito obrigada, doutora."
+  3. "Dra. Camila é extremamente atenciosa, comunicação clara, gostei muito da consulta."
+  4. "Atendimento humanizado, quis entender minha demanda."
+  5. "Muito cuidadosa e atenciosa! Com certeza vou continuar meu tratamento com você, Dra."
+  6. "Dra. extremamente humana e simpática, amei."
+  7. "Super atenciosa, amei a nossa consulta."
+  8. "Eu achei a doutora super educada e atenciosa."
+  9. "Profissional pontual, capaz, eficiente."
 
 **DÚVIDAS FREQUENTES**
 1. "Preciso estar em uma situação grave para procurar um psiquiatra?" — "Não. Quanto mais cedo identificamos um sofrimento que está causando prejuízo, mais cedo podemos compreender o que está acontecendo e discutir estratégias de cuidado."
@@ -217,7 +229,7 @@ Removidos a pedido da cliente: não há objetos 3D em nenhuma seção, e three, 
 
 ## 11. COMPONENTES REUTILIZÁVEIS
 - **FadeIn**: wrapper Framer Motion com `whileInView`, viewport `{ once: true, margin: "50px", amount: 0 }`. Props: delay, duration (padrão 0.7), x (padrão 0), y (padrão 30). Easing `[0.25, 0.1, 0.25, 1]`.
-- **Magnet**: efeito magnético usado só no ConsultButton (padding 40, deslocamento = distância / 6, entrada 0.3s ease-out, saída 0.6s ease-in-out). Somente desktop.
+- **Magnet**: mantido porque é usado pelo ConsultButton (magnetismo leve do botão), que ficou como único uso depois que saiu o do retrato; (padding 40, deslocamento = distância / 6, entrada 0.3s ease-out, saída 0.6s ease-in-out). Somente desktop.
 - **AnimatedText**: revelação letra por letra guiada pelo scroll; cada caractere vai de opacity 0.2 a 1 (`useScroll` no parágrafo, offset `['start 0.8', 'end 0.2']`), com placeholder invisível + span animado posicionado. Aceita `offset` opcional (usado no Sobre mim, com vários parágrafos). O progresso só avança (o texto não volta a apagar). Cor #E6ECF2, font-medium, leading-relaxed, `clamp(1rem, 2vw, 1.35rem)`. Incluir `aria-label` com o texto completo.
 - **ConsultButton**: pílula (rounded-full) com degradê sutil `linear-gradient(123deg, #0E1D31 0%, #1E3A5F 60%, #0E1D31 100%)`, outline 1px #C4AC8F com outline-offset 3px, texto #F7F4EE, maiúsculas, tracking-widest, `px-8 py-3 sm:px-10 sm:py-3.5 md:px-12 md:py-4`. Hover: preenchimento #C4AC8F deslizando (texto passa a #0E1D31) + magnetismo leve (desktop). Label: "Marcar consulta".
 
@@ -254,7 +266,7 @@ Discreto, no footer. Sem feed.
 - Vercel Web Analytics: componente `<Analytics />` só no build de produção.
 
 ## 16. NÃO QUERO
-Preços, planos, valores; textos além dos da seção 9; depoimentos, números ou credenciais inventados; imagens, GIFs ou objetos 3D de terceiros; fundo removido das fotos; cores neon ou roxas; visual de games ou de clínica genérica; excesso de dourado; animações exageradas; PDF publicado no site.
+Preços, planos, valores; textos além dos da seção 9; depoimentos inventados (continuam proibidos), números ou credenciais inventados; avaliações com estrelas, notas, nomes ou iniciais (as avaliações reais enviadas pela cliente são permitidas, sem identificação); imagens, GIFs ou objetos 3D de terceiros; fundo removido das fotos; cores neon ou roxas; visual de games ou de clínica genérica; excesso de dourado; animações exageradas; PDF publicado no site.
 
 ## 17. RESULTADO ESPERADO
 Ao abrir o site, a sensação deve ser: "essa é uma médica com uma presença profissional sofisticada e muito bem construída".
@@ -273,7 +285,9 @@ Mantenha todos os itens válidos a cada mudança:
 - [x] Stack conforme seção 2, sem GSAP
 - [x] Hero claro e editorial: foto à direita dissolvendo no fundo, título com "limite" em dourado, palavras subindo de máscaras, parallax
 - [x] Sobre mim: sobreposto ao Hero, AnimatedText, foto com clip-path e parallax interno
-- [x] Sem objetos 3D e sem dependências de three.js
+- [x] Sem objetos 3D e sem dependências de three.js (three, @react-three/fiber e @react-three/drei desinstalados; nenhum Canvas)
+- [x] Avaliações "O que dizem os pacientes": 9 textos reais, pilha com arrastar, setas, contador, teclado, autoplay e reduced-motion
+- [x] Constante QUALIFICACAO usada no rodapé, alt texts, title e meta tags
 - [x] Quando procurar: duas faixas de texto em sentidos opostos guiadas pelo scroll
 - [x] Cuidado centrado: lista numerada com stagger e hover
 - [x] Como funciona: 3 cards sticky com escala
@@ -285,7 +299,7 @@ Mantenha todos os itens válidos a cada mudança:
 - [x] Todos os textos em src/content.ts
 - [x] Sem preços; CREMEC 29104 no footer; aviso SAMU 192 / CVV 188 no footer
 - [ ] RQE: pendente (preencher `rodape.rqe` em `src/content.ts` quando a Dra. Camila informar)
-- [x] Lighthouse mobile acima de 85 (último: desempenho 93, acessibilidade 100, boas práticas 96, SEO 100)
+- [x] Lighthouse mobile acima de 85 (último: desempenho 94–95, acessibilidade 100, boas práticas 96, SEO 100)
 - [x] kit-site-camila.zip removido do repositório
 
 
@@ -308,12 +322,17 @@ Mantenha todos os itens válidos a cada mudança:
    - "Sobre mim" com o texto revisado em 4 parágrafos (sem "2º ano") e a frase final em destaque dourado itálico. O AnimatedText passou a só avançar e a terminar mais cedo, garantindo opacidade total.
    - Algarismos alinhados (`.num-lining`) em todos os números grandes.
    - Cards de "Como funciona" no mobile com a altura do conteúdo.
-   - Seção de Avaliações (pilha de cartões) implementada, aguardando os 9 textos para aparecer.
+   - Seção de Avaliações (pilha de cartões) implementada.
+9. **Itens finais do lote 1:**
+   - Avaliações com os 9 textos reais da cliente, título "O que dizem os pacientes", cartões de 340px.
+   - Constante `QUALIFICACAO` (valor "Psiquiatria", alternativa de residente comentada) usada no rodapé, alt texts, title e meta tags.
+   - Confirmada a remoção do 3D (pacotes, componentes e Canvas). Magnet e AnimatedText seguem em uso (botão de consulta e Sobre mim).
+   - Regra "NÃO QUERO" atualizada: depoimentos inventados proibidos; avaliações reais permitidas, sem estrelas, notas ou identificação.
+   - `html { position: relative }` para o useScroll do Framer Motion medir corretamente (removia um aviso no console de desenvolvimento).
 
 ### Pendências
 - RQE de Psiquiatria.
-- Os 9 textos das avaliações (e demais detalhes do item 5 original, se houver).
-- Os itens 4, 6, 7 e 8 do pedido de ajustes original, que nunca chegaram.
+- Confirmar com o CREMEC a qualificação (trocar `QUALIFICACAO` se for o caso) e a publicação das avaliações.
 - Confirmar com a cliente a menção à especialidade enquanto residente (RQE), ver observação abaixo.
 - Opcional: domínio próprio; avaliar hospedagem com uso comercial permitido (Vercel Pro, Cloudflare Pages ou Netlify).
 

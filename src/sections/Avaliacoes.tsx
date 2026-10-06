@@ -75,7 +75,7 @@ export function Avaliacoes() {
           aria-label={avaliacoes.titulo}
           tabIndex={0}
           onKeyDown={aoTeclar}
-          className="relative mx-auto h-[400px] w-full max-w-2xl outline-none focus-visible:outline-1 focus-visible:outline-offset-8 focus-visible:outline-dourado sm:h-[400px]"
+          className="relative mx-auto h-[340px] w-full max-w-2xl outline-none focus-visible:outline-1 focus-visible:outline-offset-8 focus-visible:outline-dourado"
         >
           <AnimatePresence initial={false} custom={direcao}>
             {pilha
@@ -102,10 +102,14 @@ export function Avaliacoes() {
                     aria-hidden={frente ? undefined : true}
                   >
                     <blockquote className="font-serif text-marinho text-[clamp(1.2rem,2.4vw,1.75rem)] leading-snug">
-                      <span aria-hidden="true" className="mb-3 block font-serif text-5xl leading-none text-dourado">“</span>
+                      <span aria-hidden="true" className="-mb-2 block h-12 font-serif text-[5.5rem] leading-[0.9] text-dourado sm:h-14 sm:text-[6.5rem]">“</span>
                       {textos[indice]}
                     </blockquote>
-                    <figcaption className="mt-6 text-xs font-medium uppercase tracking-widest text-dourado">{avaliacoes.rotulo}</figcaption>
+                    {/* Rótulo em azul (contraste AA sobre o branco); o dourado fica no filete decorativo */}
+                    <figcaption className="mt-6 flex items-center gap-3 text-xs font-medium uppercase tracking-widest text-marinho/70">
+                      <span aria-hidden="true" className="h-px w-6 bg-dourado" />
+                      {avaliacoes.rotulo}
+                    </figcaption>
                   </motion.figure>
                 );
               })}

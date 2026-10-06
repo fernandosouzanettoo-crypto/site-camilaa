@@ -1,5 +1,11 @@
 // Todos os textos do site (briefing, seção 9). Não acrescentar textos além destes.
 
+// Qualificação exibida no site (rodapé, textos alternativos, título da página e meta tags).
+// Use sempre esta constante onde "Psiquiatria" aparece como qualificação.
+export const QUALIFICACAO = "Psiquiatria";
+// Alternativa pendente de confirmação com o CREMEC:
+// export const QUALIFICACAO = "Médica · Residente em Psiquiatria (UFC)";
+
 export const WHATSAPP_URL =
   "https://wa.me/5585991034586?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta%20com%20a%20Dra.%20Camila%20Egypto.";
 export const INSTAGRAM_URL = "https://instagram.com/camilaegypto.psiquiatria";
@@ -101,11 +107,20 @@ export const comoFunciona: { titulo: string; cards: CardComoFunciona[] } = {
 };
 
 export const avaliacoes = {
-  titulo: "Avaliações",
+  titulo: "O que dizem os pacientes",
   rotulo: "Paciente",
-  // Os 9 textos, na ordem indicada pela cliente (sem nomes, estrelas ou notas).
-  // TODO: inserir os textos. Enquanto a lista estiver vazia, a seção e o link da navbar não aparecem.
-  textos: [] as string[],
+  // Avaliações reais enviadas pela cliente, nesta ordem (sem nomes, iniciais, estrelas ou notas)
+  textos: [
+    "Médica muito profissional, atenciosa e empática, conduzindo o atendimento com acolhimento, respeito e cuidado.",
+    "Nunca havia feito psiquiatra, mas ela me acolheu mais que tudo! Estou impressionada com tamanha dedicação e respeito. Muito obrigada, doutora.",
+    "Dra. Camila é extremamente atenciosa, comunicação clara, gostei muito da consulta.",
+    "Atendimento humanizado, quis entender minha demanda.",
+    "Muito cuidadosa e atenciosa! Com certeza vou continuar meu tratamento com você, Dra.",
+    "Dra. extremamente humana e simpática, amei.",
+    "Super atenciosa, amei a nossa consulta.",
+    "Eu achei a doutora super educada e atenciosa.",
+    "Profissional pontual, capaz, eficiente.",
+  ] as string[],
 };
 
 export const duvidas = {
@@ -147,7 +162,7 @@ export const cta = {
 
 export const rodape = {
   nome: "Dra. Camila Egypto",
-  especialidade: "Psiquiatria",
+  especialidade: QUALIFICACAO,
   registro: "CREMEC 29104",
   // TODO: inserir RQE antes da publicação
   rqe: "",

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { INSTAGRAM_URL, WHATSAPP_URL, avaliacoes, nav, navInstagramLabel, navWhatsappLabel } from "../content";
+import { INSTAGRAM_URL, QUALIFICACAO, WHATSAPP_URL, avaliacoes, nav, navInstagramLabel, navWhatsappLabel } from "../content";
 import { useScrollTo } from "../hooks/useLenis";
 import { EASE } from "./FadeIn";
 import { InstagramIcon, WhatsAppLineIcon } from "./Icons";
@@ -18,7 +18,7 @@ export function Navbar() {
     >
       <div className="mx-auto flex max-w-[1600px] items-center justify-between px-5 pt-4 sm:px-8 md:px-12 md:pt-6">
         <a href="#inicio" aria-label="Dra. Camila Egypto, início" onClick={(e) => { e.preventDefault(); scrollTo("#inicio"); }}>
-          <img src="/brand/logo-original.png" alt="Dra. Camila Egypto, Psiquiatria" width={957} height={917} className="h-16 w-auto sm:h-[4.5rem] md:h-20" />
+          <img src="/brand/logo-original.png" alt={`Dra. Camila Egypto, ${QUALIFICACAO}`} width={957} height={917} className="h-16 w-auto sm:h-[4.5rem] md:h-20" />
         </a>
 
         <div className="flex items-center gap-6 lg:gap-10">

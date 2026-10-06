@@ -4,6 +4,8 @@
 
 @layer base {
   html {
+    /* O useScroll do Framer Motion mede a partir do <html>; posição não estática evita medições erradas */
+    position: relative;
     -webkit-text-size-adjust: 100%;
     background: #0e1d31;
   }

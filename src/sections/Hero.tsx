@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { hero } from "../content";
+import { QUALIFICACAO, hero } from "../content";
 import { ConsultButton } from "../components/ConsultButton";
 import { FadeIn } from "../components/FadeIn";
 import { Navbar } from "../components/Navbar";
@@ -78,7 +78,7 @@ export function Hero() {
         >
           <Picture
             nome="hero-camila"
-            alt="Dra. Camila Egypto, psiquiatra, sentada em uma banqueta, de blazer preto"
+            alt={`Dra. Camila Egypto (${QUALIFICACAO}), sentada em uma banqueta, de blazer preto`}
             sizes="(min-width: 768px) 50vw, 100vw"
             prioridade
             largura={1280}

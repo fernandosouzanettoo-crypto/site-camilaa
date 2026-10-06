@@ -1,4 +1,4 @@
-import { INSTAGRAM_HANDLE, INSTAGRAM_URL, WHATSAPP_URL, rodape } from "../content";
+import { INSTAGRAM_HANDLE, INSTAGRAM_URL, QUALIFICACAO, WHATSAPP_URL, rodape } from "../content";
 import { InstagramIcon, WhatsAppIcon } from "../components/Icons";
 
 export function Footer() {
@@ -6,7 +6,7 @@ export function Footer() {
     <footer id="rodape" className="relative z-40 bg-marinho-escuro px-5 pb-10 pt-12 sm:px-8 md:px-12 md:pb-12 md:pt-16">
       <div className="mx-auto flex max-w-[1600px] flex-col gap-10 border-t border-claro/10 pt-10 md:flex-row md:items-end md:justify-between">
         <div className="flex items-center gap-6">
-          <img src="/brand/logo-clara.png" alt="Dra. Camila Egypto, Psiquiatria" width={957} height={917} loading="lazy" className="h-24 w-auto md:h-28" />
+          <img src="/brand/logo-clara.png" alt={`Dra. Camila Egypto, ${QUALIFICACAO}`} width={957} height={917} loading="lazy" className="h-24 w-auto md:h-28" />
           <div className="text-claro">
             <p className="font-serif text-2xl font-medium md:text-3xl">{rodape.nome}</p>
             <p className="mt-1 text-xs uppercase tracking-widest text-dourado">{rodape.especialidade}</p>

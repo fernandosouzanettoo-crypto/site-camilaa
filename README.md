@@ -44,6 +44,6 @@ src/
 
 - `prefers-reduced-motion` desliga Lenis, parallax, faixas, Magnet e AnimatedText; ficam só fades simples.
 - Em telas de toque, os efeitos de cursor e hover ficam desligados.
-- Lighthouse mobile (build local): desempenho 93, acessibilidade 100, boas práticas 96, SEO 100.
+- Lighthouse mobile (build local): desempenho 94, acessibilidade 100, boas práticas 96, SEO 100.
 
 Endereço publicado: https://dra-camila-egypto.vercel.app/ (se mudar para um domínio próprio, atualize `og:url`, `og:image`, `canonical` no `index.html`, o `robots.txt` e o `sitemap.xml`).
