@@ -46,4 +46,4 @@ src/
 - Em telas de toque, os efeitos de cursor e hover ficam desligados.
 - Lighthouse mobile (build local): desempenho 94, acessibilidade 100, boas práticas 96, SEO 100.
 
-Endereço publicado: https://dra-camila-egypto.vercel.app/ (se mudar para um domínio próprio, atualize `og:url`, `og:image`, `canonical` no `index.html`, o `robots.txt` e o `sitemap.xml`).
+Endereço publicado: https://www.camilaegyptopsiquiatria.com.br/ (domínio na Hostinger, DNS apontando para a Vercel; o endereço sem www redireciona para o www. Também responde em https://dra-camila-egypto.vercel.app/. Se mudar de domínio, atualize `og:url`, `og:image`, `canonical` no `index.html`, o `robots.txt` e o `sitemap.xml`).

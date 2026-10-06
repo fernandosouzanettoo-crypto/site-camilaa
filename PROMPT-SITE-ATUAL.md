@@ -1,6 +1,6 @@
 # PROMPT — SITE DRA. CAMILA EGYPTO (VERSÃO ATUAL, EM PRODUÇÃO)
 
-Este é o prompt que descreve **exatamente o site que está no ar** em https://dra-camila-egypto.vercel.app/.
+Este é o prompt que descreve **exatamente o site que está no ar** em https://www.camilaegyptopsiquiatria.com.br/.
 Ele parte do `BRIEFING-SITE.md` original e já incorpora os ajustes feitos depois (veja "Histórico de ajustes" no fim).
 
 **Como usar para pedir mudanças:** não refaça o site do zero. Parta do código atual deste repositório e altere só o que for pedido, mantendo tudo o que está descrito aqui. Ao concluir, atualize este arquivo (a seção afetada e o "Histórico de ajustes") para que ele continue descrevendo a versão no ar.
@@ -261,7 +261,7 @@ Discreto, no footer. Sem feed.
 - Responsivo mobile-first para celular, tablet, notebook e desktop.
 
 ## 15.1 PUBLICAÇÃO E COMPARTILHAMENTO
-- Endereço atual: https://dra-camila-egypto.vercel.app/
+- Endereço atual: https://www.camilaegyptopsiquiatria.com.br/
 - `og:url`, `og:image`, `twitter:image` e `canonical` usam esse endereço completo; há `robots.txt` e `sitemap.xml` em `public/`.
 - Se passar a usar domínio próprio, atualize esses endereços no `index.html`, no `robots.txt` e no `sitemap.xml`.
 - Vercel Web Analytics: componente `<Analytics />` só no build de produção.
@@ -310,7 +310,7 @@ Mantenha todos os itens válidos a cada mudança:
 3. **Revelações:** a foto do Sobre e o título do CTA usam um wrapper externo que dispara a animação (um elemento totalmente recortado por clip-path ou máscara não é detectado como visível).
 4. **Aviso de crise** (SAMU 192 / CVV 188) adicionado ao rodapé, a pedido do cliente.
 5. **Magnet do retrato suavizado:** de distância/3 (até ~120px) para distância/12, com limite de 18px.
-6. **Publicação** na Vercel em https://dra-camila-egypto.vercel.app/, com metatags de compartilhamento usando o endereço completo e `sitemap.xml`.
+6. **Publicação** na Vercel em https://www.camilaegyptopsiquiatria.com.br/, com metatags de compartilhamento usando o endereço completo e `sitemap.xml`.
 7. **Ajustes pedidos pela cliente (lote 1):**
    - Hero refeito no layout "claro e editorial" (fundo off-white, logo azul, ícones de Instagram e WhatsApp, foto à direita dissolvendo no fundo, título "Você não precisa esperar chegar ao seu limite para procurar ajuda."). Saíram o nome gigante, o arco e o Magnet do retrato. O link "Contato" da navbar foi substituído pelo ícone de WhatsApp.
    - Objetos 3D removidos e three / React Three Fiber desinstalados.
@@ -336,6 +336,8 @@ Mantenha todos os itens válidos a cada mudança:
 12. **Prévia de compartilhamento** (`og-image.jpg`) refeita com a foto nova da entrada; URL com `?v=2` para o WhatsApp não usar a versão antiga em cache.
 13. **Nova frase da entrada** enviada pela cliente ("Ajudo você a construir uma vida que faça sentido para você." / "Cuidado em saúde mental com escuta e um olhar para você como um todo."), destaque em "sentido".
 14. **Correção no computador:** em notebooks com pouca altura (ou zoom do navegador) o título subia por cima do logo; agora o texto reserva o espaço da navbar e o tamanho da fonte também considera a altura da tela. Testado em 1093×530, 1280×600, 1366×657, 1536×730, 1920×960, tablet e celulares.
+
+15. **Domínio próprio:** `camilaegyptopsiquiatria.com.br` (Hostinger; A `@` → 216.198.79.1, CNAME `www` → endereço indicado pela Vercel). O endereço principal é o **www**; o sem www redireciona (308). og:url, og:image (`?v=3`), canonical, sitemap e robots atualizados. O `dra-camila-egypto.vercel.app` continua funcionando.
 
 ### Pendências
 - RQE de Psiquiatria.
