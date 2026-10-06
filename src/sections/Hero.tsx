@@ -77,14 +77,14 @@ export function Hero() {
           transition={{ duration: 1.6, ease: EXPO_OUT }}
         >
           <Picture
-            nome="hero-camila"
-            alt={`Dra. Camila Egypto (${QUALIFICACAO}), sentada em uma banqueta, de blazer preto`}
+            nome="hero-camila-branco"
+            alt={`Dra. Camila Egypto (${QUALIFICACAO}), de blazer branco, olhando por cima do ombro`}
             sizes="(min-width: 768px) 50vw, 100vw"
             prioridade
             largura={1280}
-            altura={1812}
-            // No celular a foto é aproximada para priorizar rosto e tronco
-            className="h-full w-full origin-[50%_12%] scale-[1.35] object-cover object-[50%_18%] md:scale-100 md:object-[50%_28%]"
+            altura={1282}
+            // Foto já próxima do rosto: sem zoom; o enquadramento prioriza rosto e tronco
+            className="h-full w-full object-cover object-[50%_20%] md:object-[45%_30%]"
           />
         </motion.div>
       </motion.div>
