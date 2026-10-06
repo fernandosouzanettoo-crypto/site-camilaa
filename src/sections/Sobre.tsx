@@ -5,7 +5,6 @@ import { AnimatedText } from "../components/AnimatedText";
 import { FadeIn } from "../components/FadeIn";
 import { Picture } from "../components/Picture";
 import { useIsMobile, useReducedMotion } from "../hooks/useMedia";
-import { LazyObject3D } from "../three/LazyObject3D";
 
 export function Sobre() {
   const fotoRef = useRef<HTMLDivElement>(null);
@@ -17,19 +16,11 @@ export function Sobre() {
   const imgY = useTransform(scrollYProgress, [0, 1], [`-${amplitude}%`, `${amplitude}%`]);
 
   return (
-    <section id="sobre" className="relative overflow-hidden bg-marinho-escuro pb-56 pt-24 sm:pb-64 sm:pt-28 md:min-h-screen md:py-36">
-      {/* Objetos 3D nos cantos, atrás do conteúdo */}
-      <LazyObject3D variante="aneis" lado="direita" className="absolute -right-12 bottom-0 z-0 h-[220px] w-[220px] sm:h-[300px] sm:w-[300px] md:-right-6 md:bottom-auto md:top-10 md:h-[420px] md:w-[420px]" />
-      {!mobile && (
-        <LazyObject3D variante="esferas" lado="esquerda" className="absolute -left-10 bottom-4 z-0 h-[300px] w-[300px] lg:h-[360px] lg:w-[360px]" />
-      )}
-
-      <div className="relative z-10 mx-auto max-w-[1400px] px-5 sm:px-8 md:px-12">
+    // Sobrepõe o Hero (claro) com cantos arredondados, como as demais seções que mudam de cor
+    <section id="sobre" className="secao-sobreposta z-[5] overflow-hidden bg-marinho-escuro py-24 sm:py-28 md:min-h-screen md:py-36">
+      <div className="relative mx-auto max-w-[1400px] px-5 sm:px-8 md:px-12">
         <FadeIn>
           <h2 className="hero-heading text-center font-serif font-medium uppercase leading-none text-[clamp(3rem,12vw,160px)]">{sobre.titulo}</h2>
-        </FadeIn>
-        <FadeIn delay={0.1}>
-          <p className="mt-4 text-center font-serif text-[clamp(1.4rem,3vw,2.4rem)] italic text-claro/90 md:mt-6">{sobre.subtitulo}</p>
         </FadeIn>
 
         <div className="mt-14 grid items-center gap-10 sm:mt-16 md:mt-24 md:grid-cols-[5fr_6fr] md:gap-16 lg:gap-24">

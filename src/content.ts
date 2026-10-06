@@ -6,22 +6,20 @@ export const INSTAGRAM_URL = "https://instagram.com/camilaegypto.psiquiatria";
 export const INSTAGRAM_HANDLE = "@camilaegypto.psiquiatria";
 
 export const hero = {
-  prefixo: "Dra.",
-  nome: "Camila Egypto",
-  especialidade: "Psiquiatria",
-  frase: "Cuidar da mente é conectar histórias",
+  titulo: "Você não precisa esperar chegar ao seu limite para procurar ajuda.",
+  // Palavra do título destacada em dourado
+  destaque: "limite",
+  subtitulo: "Cuidar da mente é conectar histórias.",
 };
 
 export const nav = [
   { label: "Sobre", href: "#sobre" },
   { label: "Como funciona", href: "#como-funciona" },
   { label: "Dúvidas", href: "#duvidas" },
-  { label: "Contato", href: WHATSAPP_URL, externo: true },
 ];
 
 export const sobre = {
-  titulo: "Sobre",
-  subtitulo: "Um cuidado que começa pela escuta.",
+  titulo: "Sobre mim",
   texto:
     "Atendimento psiquiátrico com escuta qualificada, precisão clínica e uma abordagem técnica, empática e individualizada. Cada pessoa possui uma história, um contexto e necessidades diferentes. Antes de pensar em um diagnóstico, é preciso compreender a pessoa que está diante de nós.",
 };
@@ -148,5 +146,6 @@ export const rodape = {
 
 export const whatsappFlutuante = "Agende seu atendimento";
 
-// Rótulo do ícone de WhatsApp da navbar no celular
+// Rótulos dos ícones da navbar
 export const navWhatsappLabel = "Agendar pelo WhatsApp";
+export const navInstagramLabel = "Instagram da Dra. Camila Egypto";

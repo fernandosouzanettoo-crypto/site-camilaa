@@ -28,11 +28,11 @@ Situação atual:
 4. Antes de enviar mudanças: `npm run build` precisa passar (é o mesmo comando que a Vercel executa).
 
 ## 1. CONTEXTO
-Site de apresentação profissional, voltado principalmente para quem chega pelo Instagram. Não é um portal médico. Deve transmitir profissionalismo, sofisticação, confiança, acolhimento e exclusividade: uma marca pessoal premium, com linguagem visual de portfólio moderno (tipografia gigante, seções sobrepostas, profundidade e 3D sutil).
+Site de apresentação profissional, voltado principalmente para quem chega pelo Instagram. Não é um portal médico. Deve transmitir profissionalismo, sofisticação, confiança, acolhimento e exclusividade: uma marca pessoal premium, com linguagem visual de portfólio moderno (tipografia editorial, seções sobrepostas e profundidade sutil, sem 3D).
 Princípio central: MENOS INFORMAÇÃO, MAIS EXPERIÊNCIA.
 
 ## 2. STACK
-React 18 + TypeScript + Vite + Tailwind CSS 3 + Framer Motion + Lenis (scroll suave) + three + @react-three/fiber + @react-three/drei + lucide-react.
+React 18 + TypeScript + Vite + Tailwind CSS 3 + Framer Motion + Lenis (scroll suave) + lucide-react. (three / React Three Fiber foram removidos.)
 Esta é a stack em uso; mantenha-a. Deploy na Vercel (configuração em `vercel.json`).
 Use apenas Framer Motion para animações (não usar GSAP).
 
@@ -80,28 +80,29 @@ Os efeitos das seções 8 e 10 são obrigatórios mesmo que a referência não p
 
 ## 8. ESTRUTURA E EFEITOS
 Ordem e fundos:
-1. Hero (escuro) → 2. Sobre (escuro) → 3. Quando procurar (escuro) → 4. Cuidado centrado em você (claro) → 5. Como funciona (escuro) → 6. Dúvidas (claro) → 7. CTA final (escuro) → 8. Footer (escuro)
+1. Hero (claro, off-white) → 2. Sobre mim (escuro, sobreposto ao Hero) → 3. Quando procurar (escuro) → 4. Cuidado centrado em você (claro) → 5. Como funciona (escuro) → 6. Dúvidas (claro) → 7. CTA final (escuro) → 8. Footer (escuro)
 
-Seções sobrepostas: a partir da seção 4, cada seção que muda de cor tem `rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px]`, é puxada para cima com `-mt-10 sm:-mt-12 md:-mt-14` e tem z-index maior que a anterior.
+Seções sobrepostas: a partir da seção 2 (Sobre mim, que sobe sobre o Hero claro), cada seção que muda de cor tem `rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px]`, é puxada para cima com `-mt-10 sm:-mt-12 md:-mt-14` e tem z-index maior que a anterior.
 Cada seção é curta. Nada de blocos longos de texto.
 
-### 8.1 HERO (h-screen)
-- Navbar: `logo-clara.png` à esquerda e links "Sobre", "Como funciona", "Dúvidas", "Contato" (Contato abre o WhatsApp). Cor #E6ECF2, maiúsculas, tracking-wider, text-sm md:text-base. Hover: opacidade 70%, 200ms. No mobile, apenas a logo e um ícone de WhatsApp.
-- Título: "Dra." pequeno acima e "Camila Egypto" gigante com `.hero-heading` em Cormorant Garamond, maiúsculas, ocupando a largura da tela (clamp/vw, sem quebrar palavras; no mobile pode ficar em duas linhas: "Camila" / "Egypto"). Container overflow-hidden.
-- Retrato: `hero-camila` em moldura em arco (topo totalmente arredondado, borda fina #C4AC8F a 40% de opacidade), centralizado e sobreposto ao título (z-10), ancorado na base a partir de sm (no mobile, centralizado verticalmente). Largura `w-[240px] sm:w-[320px] md:w-[400px] lg:w-[460px]`. `object-cover` priorizando rosto e tronco.
-  - Componente Magnet (versão suavizada): segue o mouse quando o cursor está a até 150px da borda, deslocamento = distância / 12, limitado a no máximo 18px em cada eixo (`<Magnet strength={12} limite={18} suave>`), entrada "transform 0.9s ease-out", saída "transform 0.6s ease-in-out", `willChange: 'transform'`. Somente desktop. O ConsultButton mantém o magnetismo leve dele (padding 40, strength 6).
-  - Parallax no scroll: o retrato desce mais devagar que o título.
-- Barra inferior (justify-between, items-end):
-  - Esquerda: "PSIQUIATRIA" em #C4AC8F (pequeno, tracking-widest) e abaixo "Cuidar da mente é conectar histórias", cor #E6ECF2, font-light, `clamp(0.8rem, 1.4vw, 1.4rem)`, `max-w-[180px] sm:max-w-[240px] md:max-w-[280px]`.
-  - Direita: ConsultButton.
-- Entrada (FadeIn): navbar delay 0 / y -20; título delay 0.15 / y 40; texto delay 0.35 / y 20; botão delay 0.5 / y 20; retrato delay 0.6 / y 30.
+### 8.1 HERO (h-screen) — layout "claro e editorial"
+- Fundo off-white #F7F4EE.
+- Navbar: `logo-original.png` (azul) à esquerda. À direita, ícones de Instagram e WhatsApp em traço fino (#152A45, hover #C4AC8F, `aria-label`s "Instagram da Dra. Camila Egypto" e "Agendar pelo WhatsApp"). No desktop, os links "Sobre", "Como funciona", "Dúvidas" (maiúsculas, tracking-wider, #152A45, hover #C4AC8F) ficam ao lado dos ícones. No mobile: logo + os dois ícones. Entrada: fade com y -20.
+- Foto: `hero-camila` ocupando a metade direita (desktop), altura total, sem moldura, `object-cover` priorizando rosto e tronco. A borda esquerda se dissolve no fundo com `mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.55) 18%, #000 42%)`, sem linha de corte. `fetchpriority="high"`, preload no `index.html` com `imagesizes="(min-width: 768px) 50vw, 100vw"`.
+- Texto à esquerda, alinhado ao centro-baixo (pb ~14vh):
+  - Título em Cormorant Garamond, #152A45, `clamp(2.4rem, 5.5vw, 5.5rem)`, leading-tight: "Você não precisa esperar chegar ao seu limite para procurar ajuda.", com a palavra "limite" em #C4AC8F.
+  - Subtítulo em Montserrat font-light, #152A45 a 70%, `clamp(1rem, 1.6vw, 1.4rem)`: "Cuidar da mente é conectar histórias."
+  - ConsultButton abaixo.
+- Mobile: foto em cima (55svh), aproximada (scale 1.35, origem no rosto) para priorizar rosto e tronco, dissolvendo na parte inferior com mask-image vertical; título (4 linhas em 390px), subtítulo e botão abaixo.
+- Entrada: foto com fade + scale 1.08 → 1 (1.6s, expo.out); palavras do título sobem uma a uma de dentro de uma máscara (início 0.35s, stagger 0.06s); subtítulo e botão com fade + leve subida logo após a última palavra.
+- Parallax: a foto desce mais devagar que o texto no scroll (desktop; 50% no mobile).
+- Não há mais título gigante com `.hero-heading`, moldura em arco nem Magnet no retrato.
 
-### 8.2 SOBRE (min-h-screen)
-- Título "Sobre" com `.hero-heading`, centralizado, `clamp(3rem, 12vw, 160px)`.
-- Subtítulo em serif: "Um cuidado que começa pela escuta."
+### 8.2 SOBRE MIM (min-h-screen, sobreposto ao Hero)
+- Seção escura com cantos superiores arredondados (`secao-sobreposta`), sobrepondo o Hero.
+- Título "Sobre mim" com `.hero-heading`, centralizado, maiúsculas, `clamp(3rem, 12vw, 160px)`. Sem subtítulo.
 - Layout: `sobre-camila` à esquerda (desktop) ou acima (mobile), `rounded-[40px] md:rounded-[60px]`, reveal por clip-path e parallax interno (imagem ~120% da altura deslizando no container). Texto à direita.
 - Texto com AnimatedText (letra por letra, ver seção 11).
-- Objetos 3D (seção 10) nos cantos, atrás do conteúdo.
 
 ### 8.3 QUANDO PROCURAR UM PSIQUIATRA? (faixas em movimento)
 - Título: "Quando procurar um psiquiatra?" (serif, grande, centralizado) e abaixo "Você não precisa esperar chegar ao seu limite para procurar ajuda."
@@ -146,10 +147,11 @@ Não incluir localização nem modalidade de atendimento.
 ## 9. TEXTOS (centralizar em `src/content.ts`)
 
 **HERO**
-- "Dra." / "Camila Egypto" / "PSIQUIATRIA" / "Cuidar da mente é conectar histórias"
+- Título: "Você não precisa esperar chegar ao seu limite para procurar ajuda." (destaque em "limite")
+- Subtítulo: "Cuidar da mente é conectar histórias."
 
-**SOBRE**
-- Subtítulo: "Um cuidado que começa pela escuta."
+**SOBRE MIM**
+- Título: "Sobre mim"
 - Texto: "Atendimento psiquiátrico com escuta qualificada, precisão clínica e uma abordagem técnica, empática e individualizada. Cada pessoa possui uma história, um contexto e necessidades diferentes. Antes de pensar em um diagnóstico, é preciso compreender a pessoa que está diante de nós."
 
 **QUANDO PROCURAR (itens das faixas)**
@@ -184,29 +186,18 @@ Não incluir localização nem modalidade de atendimento.
 
 Não acrescente textos além destes, exceto rótulos curtos de interface.
 
-## 10. OBJETOS 3D (React Three Fiber)
-Conceito: "conectar histórias". Nada de objetos aleatórios.
-- Peça principal: dois anéis (torus) entrelaçados; mais uma ou duas esferas pequenas.
-- Materiais: vidro azulado (MeshTransmissionMaterial ou MeshPhysicalMaterial com transmission) e dourado acetinado #C4AC8F (metalness alto, roughness ~0.3). Iluminação suave com Environment discreto. Sem neon.
-- Movimento: rotação lenta, flutuação suave (Float do drei) e leve parallax com o cursor (desktop).
-- Entrada: os objetos deslizam das laterais (x ±80, 0.9s) ao entrar na seção.
-- Onde: cantos da seção Sobre. Desktop: anéis no canto superior direito e esferas no canto inferior esquerdo. Mobile: só os anéis, no canto inferior direito (para não cobrir o título). O anel opcional no Hero NÃO foi usado (atrasaria o carregamento da primeira tela).
-- O canvas usa fundo #0E1D31 (igual ao da seção) para o vidro com transmission não renderizar preto.
-- Performance obrigatória:
-  - Canvas com React.lazy, renderizado só quando a seção está visível (pausar fora da tela);
-  - dpr máximo 1.5;
-  - mobile: apenas um objeto, sem transmission;
-  - prefers-reduced-motion: objetos estáticos.
+## 10. OBJETOS 3D
+Removidos a pedido da cliente: não há objetos 3D em nenhuma seção, e three, @react-three/fiber e @react-three/drei foram desinstalados. Não colocar nada no lugar.
 
 ## 11. COMPONENTES REUTILIZÁVEIS
 - **FadeIn**: wrapper Framer Motion com `whileInView`, viewport `{ once: true, margin: "50px", amount: 0 }`. Props: delay, duration (padrão 0.7), x (padrão 0), y (padrão 30). Easing `[0.25, 0.1, 0.25, 1]`.
-- **Magnet**: efeito magnético descrito no Hero.
+- **Magnet**: efeito magnético usado só no ConsultButton (padding 40, deslocamento = distância / 6, entrada 0.3s ease-out, saída 0.6s ease-in-out). Somente desktop.
 - **AnimatedText**: revelação letra por letra guiada pelo scroll; cada caractere vai de opacity 0.2 a 1 (`useScroll` no parágrafo, offset `['start 0.8', 'end 0.2']`), com placeholder invisível + span animado posicionado. Cor #E6ECF2, font-medium, leading-relaxed, `clamp(1rem, 2vw, 1.35rem)`. Incluir `aria-label` com o texto completo.
 - **ConsultButton**: pílula (rounded-full) com degradê sutil `linear-gradient(123deg, #0E1D31 0%, #1E3A5F 60%, #0E1D31 100%)`, outline 1px #C4AC8F com outline-offset 3px, texto #F7F4EE, maiúsculas, tracking-widest, `px-8 py-3 sm:px-10 sm:py-3.5 md:px-12 md:py-4`. Hover: preenchimento #C4AC8F deslizando (texto passa a #0E1D31) + magnetismo leve (desktop). Label: "Marcar consulta".
 
 ## 12. MOVIMENTO GLOBAL
 - Lenis em todo o site (duration ~1.2).
-- prefers-reduced-motion: desativar Lenis, parallax, faixas em movimento, Magnet, AnimatedText (texto em opacidade total) e animação 3D; manter apenas fades simples.
+- prefers-reduced-motion: desativar Lenis, parallax, faixas em movimento, Magnet e AnimatedText (texto em opacidade total); manter apenas fades simples (no Hero, as palavras do título só fazem fade).
 - Touch: desativar efeitos de cursor/hover.
 - Mobile: parallax com intensidade ~50%, 60fps, animar apenas transform e opacity.
 - Discreto e premium: o usuário deve sentir a profundidade, não pensar "isso tem um efeito".
@@ -226,7 +217,7 @@ Discreto, no footer. Sem feed.
 - Código limpo, componentes reutilizáveis, HTML semântico, `lang="pt-BR"`.
 - SEO: title "Dra. Camila Egypto | Psiquiatria", meta description baseada no texto do Sobre, Open Graph com imagem de compartilhamento 1200x630 gerada a partir de `hero-camila`, favicons do kit.
 - Acessibilidade: contraste adequado, alt nas fotos, navegação por teclado.
-- Performance: Lighthouse mobile acima de 85; 3D com carregamento preguiçoso.
+- Performance: Lighthouse mobile acima de 85.
 - Vercel Web Analytics (`@vercel/analytics`), sem cookies.
 - Responsivo mobile-first para celular, tablet, notebook e desktop.
 
@@ -241,7 +232,7 @@ Preços, planos, valores; textos além dos da seção 9; depoimentos, números o
 
 ## 17. RESULTADO ESPERADO
 Ao abrir o site, a sensação deve ser: "essa é uma médica com uma presença profissional sofisticada e muito bem construída".
-Tipografia gigante + fotografia forte + seções sobrepostas + 3D com significado + microinterações. Preciso, elegante e memorável.
+Tipografia editorial + fotografia forte + seções sobrepostas + microinterações. Preciso, elegante e memorável.
 
 ## 18. PROCESSO DE TRABALHO (PARA MUDANÇAS)
 - Leia este arquivo e o código atual antes de alterar qualquer coisa.
@@ -254,9 +245,9 @@ Tipografia gigante + fotografia forte + seções sobrepostas + 3D com significad
 Mantenha todos os itens válidos a cada mudança:
 - [x] Kit descompactado; imagens, logos e favicons na pasta pública; PDF fora dela
 - [x] Stack conforme seção 2, sem GSAP
-- [x] Hero: título gigante em degradê, retrato em arco com Magnet e parallax, entrada em sequência
-- [x] Sobre: AnimatedText, foto com clip-path e parallax interno
-- [x] Objetos 3D: anéis entrelaçados, lazy load, versão leve no mobile, reduced-motion
+- [x] Hero claro e editorial: foto à direita dissolvendo no fundo, título com "limite" em dourado, palavras subindo de máscaras, parallax
+- [x] Sobre mim: sobreposto ao Hero, AnimatedText, foto com clip-path e parallax interno
+- [x] Sem objetos 3D e sem dependências de three.js
 - [x] Quando procurar: duas faixas de texto em sentidos opostos guiadas pelo scroll
 - [x] Cuidado centrado: lista numerada com stagger e hover
 - [x] Como funciona: 3 cards sticky com escala
@@ -268,7 +259,7 @@ Mantenha todos os itens válidos a cada mudança:
 - [x] Todos os textos em src/content.ts
 - [x] Sem preços; CREMEC 29104 no footer; aviso SAMU 192 / CVV 188 no footer
 - [ ] RQE: pendente (preencher `rodape.rqe` em `src/content.ts` quando a Dra. Camila informar)
-- [x] Lighthouse mobile acima de 85 (último: desempenho 94, acessibilidade 100, boas práticas 96, SEO 100)
+- [x] Lighthouse mobile acima de 85 (último, após o novo Hero: desempenho 92, acessibilidade 100, boas práticas 96, SEO 100)
 - [x] kit-site-camila.zip removido do repositório
 
 
@@ -279,8 +270,14 @@ Mantenha todos os itens válidos a cada mudança:
 4. **Aviso de crise** (SAMU 192 / CVV 188) adicionado ao rodapé, a pedido do cliente.
 5. **Magnet do retrato suavizado:** de distância/3 (até ~120px) para distância/12, com limite de 18px.
 6. **Publicação** na Vercel em https://dra-camila-egypto.vercel.app/, com metatags de compartilhamento usando o endereço completo e `sitemap.xml`.
+7. **Ajustes pedidos pela cliente (lote 1):**
+   - Hero refeito no layout "claro e editorial" (fundo off-white, logo azul, ícones de Instagram e WhatsApp, foto à direita dissolvendo no fundo, título "Você não precisa esperar chegar ao seu limite para procurar ajuda."). Saíram o nome gigante, o arco e o Magnet do retrato. O link "Contato" da navbar foi substituído pelo ícone de WhatsApp.
+   - Objetos 3D removidos e three / React Three Fiber desinstalados.
+   - "Sobre" virou "Sobre mim", sem subtítulo, e passou a sobrepor o Hero com cantos arredondados.
+   - Pendente deste lote: novo texto do "Sobre mim" (a mensagem com o texto chegou incompleta) e eventuais itens seguintes.
 
 ### Pendências
 - RQE de Psiquiatria.
-- Feedback da Dra. Camila (o site foi enviado para ela analisar).
+- Texto novo do "Sobre mim" (aguardando o texto completo da cliente).
+- Restante do lote 1 de ajustes, se houver itens após o 3.
 - Opcional: domínio próprio; avaliar hospedagem com uso comercial permitido (Vercel Pro, Cloudflare Pages ou Netlify).

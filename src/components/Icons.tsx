@@ -20,3 +20,13 @@ export function InstagramIcon({ className }: P) {
     </svg>
   );
 }
+
+/** WhatsApp em traço fino, no mesmo estilo dos ícones do lucide-react. */
+export function WhatsAppLineIcon({ className }: P) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <path d="M3.6 20.4l1.25-4.05A8.6 8.6 0 1 1 8 19.3z" />
+      <path d="M9.1 8.3c.2-.4.6-.4.8-.1l.7 1.4c.1.3 0 .5-.2.7l-.4.4c.5 1 1.3 1.8 2.3 2.3l.4-.4c.2-.2.4-.3.7-.2l1.4.7c.3.2.3.6-.1.8-.7.5-1.6.7-2.5.3a7.4 7.4 0 0 1-3.4-3.4c-.4-.9-.2-1.8.3-2.5z" />
+    </svg>
+  );
+}

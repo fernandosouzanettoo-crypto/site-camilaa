@@ -1,6 +1,6 @@
 # Dra. Camila Egypto · Psiquiatria
 
-Site de apresentação em React 18 + TypeScript + Vite + Tailwind CSS 3 + Framer Motion + Lenis + React Three Fiber.
+Site de apresentação em React 18 + TypeScript + Vite + Tailwind CSS 3 + Framer Motion + Lenis.
 O briefing original está em [`BRIEFING-SITE.md`](BRIEFING-SITE.md), e o prompt que descreve a versão no ar (base para novas mudanças) está em [`PROMPT-SITE-ATUAL.md`](PROMPT-SITE-ATUAL.md).
 
 ## Rodar
@@ -31,7 +31,6 @@ src/
   App.tsx           ordem das seções
   sections/         Hero, Sobre, QuandoProcurar, CuidadoCentrado, ComoFunciona, Duvidas, CtaFinal, Footer
   components/       FadeIn, Magnet, AnimatedText, ConsultButton, WhatsAppFloat, Navbar, Picture, Icons
-  three/            RingsScene (anéis entrelaçados, carregada sob demanda) e LazyObject3D
   hooks/            useLenis (scroll suave) e useMedia (reduced-motion, touch, mobile)
 ```
 
@@ -43,9 +42,8 @@ src/
 
 ## Acessibilidade e desempenho
 
-- `prefers-reduced-motion` desliga Lenis, parallax, faixas, Magnet, AnimatedText e a animação 3D; ficam só fades simples.
+- `prefers-reduced-motion` desliga Lenis, parallax, faixas, Magnet e AnimatedText; ficam só fades simples.
 - Em telas de toque, os efeitos de cursor e hover ficam desligados.
-- O 3D (three.js) fica num pedaço separado do código, carregado só quando a seção Sobre se aproxima, e pausa fora da tela. DPR máximo 1.5; no celular, um objeto só e sem transmission.
-- Lighthouse mobile (build local): desempenho 94, acessibilidade 100, boas práticas 96, SEO 100.
+- Lighthouse mobile (build local): desempenho 92, acessibilidade 100, boas práticas 96, SEO 100.
 
 Endereço publicado: https://dra-camila-egypto.vercel.app/ (se mudar para um domínio próprio, atualize `og:url`, `og:image`, `canonical` no `index.html`, o `robots.txt` e o `sitemap.xml`).

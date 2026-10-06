@@ -3,73 +3,103 @@ import { useRef } from "react";
 import { hero } from "../content";
 import { ConsultButton } from "../components/ConsultButton";
 import { FadeIn } from "../components/FadeIn";
-import { Magnet } from "../components/Magnet";
 import { Navbar } from "../components/Navbar";
 import { Picture } from "../components/Picture";
 import { useIsMobile, useReducedMotion } from "../hooks/useMedia";
+
+const EXPO_OUT = [0.16, 1, 0.3, 1] as const;
+const INICIO_TITULO = 0.35; // o título começa enquanto a foto ainda está entrando
+const STAGGER = 0.06;
+
+// Borda da foto que se dissolve no fundo: à esquerda no desktop, embaixo no celular
+const MASCARA_DESKTOP = "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.55) 18%, #000 42%)";
+const MASCARA_MOBILE = "linear-gradient(to bottom, #000 0%, #000 55%, rgba(0,0,0,0.55) 78%, transparent 100%)";
+
+function Titulo() {
+  const reduced = useReducedMotion();
+  const palavras = hero.titulo.split(" ");
+  return (
+    <h1
+      aria-label={hero.titulo}
+      className="font-serif font-medium leading-tight text-marinho text-[clamp(2.4rem,5.5vw,5.5rem)]"
+    >
+      {palavras.map((palavra, i) => {
+        const limpa = palavra.replace(/[.,!?;:]/g, "");
+        const destaque = limpa.toLowerCase() === hero.destaque.toLowerCase();
+        return (
+          // Cada palavra sobe de dentro de uma máscara (overflow hidden)
+          <span key={i} aria-hidden="true" className="inline-block overflow-hidden pb-[0.08em] align-bottom">
+            <motion.span
+              className={`inline-block ${destaque ? "text-dourado" : ""}`}
+              initial={reduced ? { opacity: 0 } : { y: "110%" }}
+              animate={reduced ? { opacity: 1 } : { y: "0%" }}
+              transition={{ duration: 1, delay: INICIO_TITULO + i * STAGGER, ease: EXPO_OUT }}
+            >
+              {palavra}
+            </motion.span>
+            {i < palavras.length - 1 && " "}
+          </span>
+        );
+      })}
+    </h1>
+  );
+}
 
 export function Hero() {
   const ref = useRef<HTMLElement>(null);
   const reduced = useReducedMotion();
   const mobile = useIsMobile();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  // Retrato desce mais devagar que o título (no celular, metade da intensidade)
+  // A foto desce mais devagar que o texto (no celular, metade da intensidade)
   const intensidade = reduced ? 0 : mobile ? 0.5 : 1;
-  const retratoY = useTransform(scrollYProgress, [0, 1], [0, 220 * intensidade]);
-  const tituloY = useTransform(scrollYProgress, [0, 1], [0, 60 * intensidade]);
+  const fotoY = useTransform(scrollYProgress, [0, 1], [0, 160 * intensidade]);
+
+  // Subtítulo e botão entram depois da última palavra do título
+  const fimTitulo = INICIO_TITULO + hero.titulo.split(" ").length * STAGGER;
 
   return (
-    <section id="inicio" ref={ref} className="relative h-[100svh] min-h-[560px] overflow-hidden bg-marinho-escuro">
-      {/* luz suave atrás do retrato */}
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[radial-gradient(50%_45%_at_50%_62%,rgba(110,128,153,0.22),transparent_70%)]" />
-
+    <section
+      id="inicio"
+      ref={ref}
+      className="relative z-0 flex min-h-[100svh] flex-col overflow-hidden bg-off md:block md:h-[100svh] md:min-h-[620px]"
+    >
       <Navbar />
 
-      {/* Título gigante */}
-      <motion.div style={{ y: tituloY }} className="absolute inset-x-0 top-[15%] z-0 overflow-hidden px-3 sm:top-[22%] md:top-[24%]">
-        <FadeIn delay={0.15} y={40}>
-          <h1 className="text-center font-serif font-medium uppercase leading-[0.86]">
-            <span className="mb-1 block text-[clamp(1rem,2.2vw,2rem)] tracking-[0.3em] text-claro/70 sm:mb-2">{hero.prefixo}</span>
-            <span className="hero-heading block whitespace-nowrap text-[23vw] sm:text-[11.6vw]">
-              <span className="block sm:inline">Camila</span>
-              <span className="hidden sm:inline"> </span>
-              <span className="block sm:inline">Egypto</span>
-            </span>
-          </h1>
-        </FadeIn>
+      {/* Foto: metade direita no desktop, topo no celular, sem moldura */}
+      <motion.div
+        style={{ y: fotoY, WebkitMaskImage: mobile ? MASCARA_MOBILE : MASCARA_DESKTOP, maskImage: mobile ? MASCARA_MOBILE : MASCARA_DESKTOP }}
+        className="relative h-[55svh] w-full shrink-0 md:absolute md:inset-y-0 md:right-0 md:h-full md:w-1/2"
+      >
+        <motion.div
+          className="h-full w-full"
+          initial={{ opacity: 0, scale: reduced ? 1 : 1.08 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.6, ease: EXPO_OUT }}
+        >
+          <Picture
+            nome="hero-camila"
+            alt="Dra. Camila Egypto, psiquiatra, sentada em uma banqueta, de blazer preto"
+            sizes="(min-width: 768px) 50vw, 100vw"
+            prioridade
+            largura={1280}
+            altura={1812}
+            // No celular a foto é aproximada para priorizar rosto e tronco
+            className="h-full w-full origin-[50%_12%] scale-[1.35] object-cover object-[50%_18%] md:scale-100 md:object-[50%_28%]"
+          />
+        </motion.div>
       </motion.div>
 
-      {/* Retrato em arco, sobreposto ao título */}
-      <div className="absolute inset-x-0 top-1/2 z-10 flex -translate-y-[38%] justify-center sm:bottom-0 sm:top-auto sm:translate-y-0">
-        <motion.div style={{ y: retratoY }}>
-          <FadeIn delay={0.6} y={30}>
-            {/* Magnet suave: segue o cursor de leve, no máximo 18px */}
-            <Magnet strength={12} limite={18} suave>
-              <div className="relative w-[240px] overflow-hidden rounded-t-full border border-dourado/40 bg-[#c9cacc] sm:w-[320px] md:w-[400px] lg:w-[460px] aspect-[4/5.1] sm:aspect-[4/5]">
-                <Picture
-                  nome="hero-camila"
-                  alt="Dra. Camila Egypto, psiquiatra, sentada em uma banqueta, de blazer preto"
-                  sizes="(min-width: 1024px) 460px, (min-width: 768px) 400px, (min-width: 640px) 320px, 240px"
-                  prioridade
-                  largura={1280}
-                  altura={1812}
-                  className="h-full w-full object-cover object-[50%_18%]"
-                />
-              </div>
-            </Magnet>
+      {/* Texto: à esquerda, alinhado ao centro-baixo no desktop; abaixo da foto no celular */}
+      <div className="relative z-10 mx-auto flex w-full max-w-[1600px] flex-1 px-5 pb-12 sm:px-8 md:h-full md:items-end md:px-12 md:pb-[14vh]">
+        <div className="-mt-6 w-full md:mt-0 md:w-1/2 md:max-w-[720px] md:pr-8">
+          <Titulo />
+          <FadeIn delay={fimTitulo - 0.1} y={16}>
+            <p className="mt-5 font-light text-marinho/70 text-[clamp(1rem,1.6vw,1.4rem)] md:mt-7">{hero.subtitulo}</p>
           </FadeIn>
-        </motion.div>
-      </div>
-
-      {/* Barra inferior */}
-      <div className="absolute inset-x-0 bottom-0 z-20 mx-auto flex max-w-[1600px] items-end justify-between gap-4 px-5 pb-6 sm:px-8 sm:pb-8 md:px-12 md:pb-10">
-        <FadeIn delay={0.35} y={20}>
-          <p className="mb-2 text-[0.62rem] font-medium uppercase tracking-widest text-dourado sm:text-xs">{hero.especialidade}</p>
-          <p className="max-w-[180px] text-[clamp(0.8rem,1.4vw,1.4rem)] font-light leading-snug text-claro sm:max-w-[240px] md:max-w-[280px]">{hero.frase}</p>
-        </FadeIn>
-        <FadeIn delay={0.5} y={20}>
-          <ConsultButton />
-        </FadeIn>
+          <FadeIn delay={fimTitulo + 0.05} y={16} className="mt-7 md:mt-10">
+            <ConsultButton />
+          </FadeIn>
+        </div>
       </div>
     </section>
   );
