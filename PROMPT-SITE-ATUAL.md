@@ -330,9 +330,9 @@ Mantenha todos os itens válidos a cada mudança:
    - Regra "NÃO QUERO" atualizada: depoimentos inventados proibidos; avaliações reais permitidas, sem estrelas, notas ou identificação.
    - `html { position: relative }` para o useScroll do Framer Motion medir corretamente (removia um aviso no console de desenvolvimento).
 
+10. **Foto da entrada trocada** pela de blazer branco escolhida pela cliente (primeiro a partir de um print, depois substituída pelo arquivo original em alta, 1717×2576). A foto antiga da entrada (`hero-camila`, blazer preto na banqueta) passou para o card 03.
 11. **Card 03 de "Como funciona" com foto:** usa a antiga foto da entrada (`hero-camila`), como os cards 01 e 02.
 12. **Prévia de compartilhamento** (`og-image.jpg`) refeita com a foto nova da entrada; URL com `?v=2` para o WhatsApp não usar a versão antiga em cache.
-10. **Foto da entrada trocada** pela de blazer branco escolhida pela cliente (primeiro a partir de um print, depois substituída pelo arquivo original em alta, 1717×2576). A foto antiga da entrada (`hero-camila`, blazer preto na banqueta) passou para o card 03.
 
 ### Pendências
 - RQE de Psiquiatria.
