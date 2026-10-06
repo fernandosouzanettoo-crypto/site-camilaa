@@ -102,6 +102,7 @@ export const comoFunciona: { titulo: string; cards: CardComoFunciona[] } = {
       titulo: "O acompanhamento",
       destaque: "Saúde mental é processo, não apenas uma consulta.",
       texto: "Acompanhar a evolução permite ajustar o tratamento, prevenir recaídas e construir um cuidado sustentável ao longo do tempo.",
+      foto: { nome: "hero-camila", alt: "Dra. Camila Egypto sentada em uma banqueta, de blazer preto" },
     },
   ],
 };

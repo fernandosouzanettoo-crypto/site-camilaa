@@ -34,7 +34,7 @@ function Card({ card, index, progresso, reduced }: { card: CardComoFunciona; ind
           <div>
             <h3 className="font-serif font-medium leading-tight text-claro text-[clamp(1.8rem,3.6vw,3.4rem)]">{card.titulo}</h3>
             {card.destaque && (
-              <p className="mt-4 font-serif italic leading-[1.08] text-claro text-[clamp(1.7rem,4.4vw,4.2rem)]">{card.destaque}</p>
+              <p className="mt-3 font-serif italic leading-[1.1] text-claro text-[clamp(1.5rem,3vw,2.8rem)]">{card.destaque}</p>
             )}
             <p className="mt-4 max-w-xl font-light leading-relaxed text-claro/70 text-[clamp(0.88rem,1.3vw,1.1rem)]">{card.texto}</p>
           </div>

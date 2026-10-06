@@ -133,7 +133,7 @@ Todos os números grandes (01/02/03 do "Cuidado centrado", do "Como funciona" e 
 - Layout do card: número grande + título + texto curto de um lado; foto do outro (`rounded-[40px]`, object-cover). No mobile, foto acima do texto.
   - Card 01 → `atendimento-camila`
   - Card 02 → `atuacao-camila`
-  - Card 03 → sem foto: frase em destaque, serif grande.
+  - Card 03 → `hero-camila` (blazer preto, na banqueta; antiga foto da entrada), com a frase em destaque um pouco menor (`clamp(1.5rem, 3vw, 2.8rem)`).
 
 - Mobile (abaixo de md): o card tem a altura do conteúdo (sem `h-[85vh]` nem altura fixa), foto com 240px (300px em sm), espaçamento de 24px entre cards; mantém o sticky e a escala. Desktop sem mudanças.
 
@@ -330,12 +330,12 @@ Mantenha todos os itens válidos a cada mudança:
    - Regra "NÃO QUERO" atualizada: depoimentos inventados proibidos; avaliações reais permitidas, sem estrelas, notas ou identificação.
    - `html { position: relative }` para o useScroll do Framer Motion medir corretamente (removia um aviso no console de desenvolvimento).
 
-10. **Foto da entrada trocada** pela de blazer branco escolhida pela cliente (primeiro a partir de um print, depois substituída pelo arquivo original em alta, 1717×2576). A foto antiga da entrada (`hero-camila`, blazer preto na banqueta) ficou sem uso no site e é candidata ao card 03 de "Como funciona", se a cliente aprovar. A imagem de compartilhamento (`og-image.jpg`) continua com a foto antiga.
+11. **Card 03 de "Como funciona" com foto:** usa a antiga foto da entrada (`hero-camila`), como os cards 01 e 02.
+12. **Prévia de compartilhamento** (`og-image.jpg`) refeita com a foto nova da entrada; URL com `?v=2` para o WhatsApp não usar a versão antiga em cache.
+10. **Foto da entrada trocada** pela de blazer branco escolhida pela cliente (primeiro a partir de um print, depois substituída pelo arquivo original em alta, 1717×2576). A foto antiga da entrada (`hero-camila`, blazer preto na banqueta) passou para o card 03.
 
 ### Pendências
 - RQE de Psiquiatria.
-- Refazer a `og-image.jpg` (prévia de compartilhamento) com a foto nova, se a cliente quiser.
-- Card 03 de "Como funciona": foto nova ou reaproveitar `hero-camila`, se a cliente aprovar.
 - Possível nova frase para a entrada (a cliente está pensando).
 - Confirmar com o CREMEC a qualificação (trocar `QUALIFICACAO` se for o caso) e a publicação das avaliações.
 - Confirmar com a cliente a menção à especialidade enquanto residente (RQE), ver observação abaixo.
